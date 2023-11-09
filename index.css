@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Futura';
+    src: url(fonts/FuturaNowHeadlineMedium.ttf);
+    font-family: 'TruenoRound';
+    src: url(fonts/TruenoRound.otf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -30,21 +37,31 @@
 }
 .navbar a{
     font-size: 18px;
-    color: white;
+    color: rgb(148, 148, 148);
     font-weight: 500;
+    font-family: 'TruenoRound';
     text-decoration: none;
     margin-left: 40px;
 }
 
+.navbar a:hover{
+    color: #244AA5;
+    transition: .3s;
+}
 .navbar a::before{
     content: '';
     position: absolute;
     top: 100%;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 6px;
     background: #244AA5;
     transition: .3s;
+}
+
+.navbar img{
+    height: 25px;
+    width: 20px;
 }
 
 .navbar a:hover::before{
@@ -62,7 +79,7 @@ body {
 .video-background{
     position: relative;
     width: 100%;
-    height: 80vh;
+    height: 83vh;
     overflow: hidden;
 }
 
@@ -80,9 +97,9 @@ body {
 }
 
 .content h1{
-    font-size: 160px;
+    font-size: 60px;
+    font-weight: 200;
     color: white;
-    letter-spacing: 10px;
     font-family: 'Futura', sans-serif;
 }
 
@@ -104,11 +121,12 @@ body {
 }
 
 .buttoni-c:hover{
-    background-color: #244AA5;
-    color: #D0A650;    
+    background-color: #2551b9;
+    color: white;    
     transition: 0.3s;
-    border: 2px solid #244AA5;
+    border: 2px solid #2551b9;
 }
+
 
 .paper{
     height: 40vh;
@@ -116,4 +134,76 @@ body {
     position:absolute;
     min-height:40px;
     top: 55%;
+}
+
+.mapdiv{
+    text-align: center;
+    margin-top: 150px;
+}
+
+.mapdiv path{
+    stroke: black;
+    stroke-width: 3px;
+}
+
+.region-path {
+    fill: transparent; /* Default background color */
+    transition: fill 0.2s;
+}
+.KS-PR:hover{
+    fill: rgb(94, 212, 252);
+    stroke: white;
+}
+
+.KS-MR:hover{
+    fill: green;
+    stroke: black;
+}
+
+.KS-PZ:hover{
+    fill: orange;
+    stroke: black;
+}
+
+.KS-PE:hover{
+    fill: red;
+    stroke: white;
+}
+
+.KS-FE:hover{
+    fill: blue;
+    stroke: white;
+}
+
+.KS-GL:hover{
+    fill: #d1281c;
+    stroke: white;
+}
+
+.KS-GJ:hover{
+    fill: #ba271d;
+    stroke: black;
+}
+.region-name {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
+@media screen and (max-width: 890px) {
+    div.video-background{
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 1600px){
+    .header h1{
+        display: none;
+    }
 }
