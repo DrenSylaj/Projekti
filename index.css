@@ -39,7 +39,8 @@ body {
     --text-color: #244AA5;
     --search-bar: #244AA5;
     --search-text: #d0d0d0;
-    --underline-color: white;
+    --underline-color: #D0A650;
+    --dropdown-background: #ececec;
 }
 
 body.dark{
@@ -49,6 +50,7 @@ body.dark{
     --text-color: #CCC;
     --search-bar: #242526;
     --underline-color: #244AA5;
+    --dropdown-background: #2c2d2d;
 }
 
 nav{
@@ -90,7 +92,7 @@ nav .nav-bar .sidebarOpen{
 nav .nav-bar .logo a{
     font-size: 25px;
     font-weight: 700;
-    color: var(--text-color);
+    color: #D0A650;
     text-decoration: none;
     user-select: none;
 }
@@ -256,6 +258,46 @@ body.dark .search-field input{
 body.dark .search-field i{
     color: var(--text-color);
 }
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: var(--text-color);
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--nav-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    background-color: var(--dropdown-background);
+    color: var(--text-color);
+    font-size: 15px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content a:hover {
+    background-color: var(--underline-color);
+    color: white;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 
 @media (max-width: 790px) {
     nav .nav-bar .sidebarOpen{
