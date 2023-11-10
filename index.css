@@ -39,6 +39,7 @@ body {
     --text-color: #244AA5;
     --search-bar: #244AA5;
     --search-text: #d0d0d0;
+    --underline-color: white;
 }
 
 body.dark{
@@ -47,6 +48,7 @@ body.dark{
     --side-nav: #242526;
     --text-color: #CCC;
     --search-bar: #242526;
+    --underline-color: #244AA5;
 }
 
 nav{
@@ -90,6 +92,7 @@ nav .nav-bar .logo a{
     font-weight: 700;
     color: var(--text-color);
     text-decoration: none;
+    user-select: none;
 }
 
 .menu .logo-toggle{
@@ -121,12 +124,11 @@ nav .nav-bar .logo a{
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
-    background-color: var(--text-color);
+    height: 4px;
+    width: 60%;
+    background-color: var( --underline-color);
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links li:hover a::before{
