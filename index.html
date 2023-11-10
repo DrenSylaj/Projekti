@@ -4,19 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="index.js"></script>
     <title>KosovaCityTour</title>
 </head>
 <body>
-    <header class="header">
-        <a href="#top" class="logo"><img src="fotot/logoKosova2.png" alt="logoKS" id="img-logo"></a>
-        <h1>KOSOVA</h1>
-        <nav class="navbar">
-            <a href="#top" class="active">HOME</a>
-            <a href="#Cities">CITIES</a>
-            <a href="#MORE">MORE</a>
-            <a href="#LogIn">LOG IN</a>
-        </nav>
-    </header>
+  <nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen' ></i>
+        <span class="logo navLogo"><a href="#">KOSOVA</a></span>
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">Dardania</a></span>
+                <i class='bx bx-x siderbarClose'></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">CITIES</a></li>
+                <li><a href="#">MORE</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">LOG IN</a></li>
+            </ul>
+        </div>
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+            <div class="searchBox">
+               <div class="searchToggle">
+                <i class='bx bx-x cancel'></i>
+                <i class='bx bx-search search'></i>
+               </div>
+                <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
     
     <div class="video-background">
         <video autoplay muted loop plays-inline id="myVideo">
