@@ -4,6 +4,10 @@
     font-family: 'TruenoRound';
     src: url(fonts/TruenoRound.otf);
 }
+@font-face {
+    font-family: 'Balboa';
+    src: url(fonts/FontsFree-Net-Balboa-W01-Bold.ttf);
+}
 
 *{
     margin: 0;
@@ -67,7 +71,22 @@ body.dark nav{
     border: 1px solid #393838;
 
 }
+.logo-KS{
+    display: flex;
+    align-items: center;
+}
 
+.logo{
+    margin: 0 5px;
+}
+
+.logo-KS img{
+    display: flex;
+    justify-content: end;
+    width: 36px;
+    height: 38px;
+
+}
 nav .nav-bar{
     position: relative;
     height: 100%;
@@ -95,6 +114,7 @@ nav .nav-bar .logo a{
     color: #D0A650;
     text-decoration: none;
     user-select: none;
+    /* margin-right: 75px; */
 }
 
 .menu .logo-toggle{
@@ -299,7 +319,7 @@ body.dark .search-field i{
     display: block;
   }
 
-@media (max-width: 790px) {
+@media (max-width: 820px) {
     nav .nav-bar .sidebarOpen{
         display: block;
     }
