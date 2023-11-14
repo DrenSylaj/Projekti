@@ -449,6 +449,26 @@ body.dark .search-field i{
     font-size: 45px;
 }
 
+.overlay-text::before,
+.overlay-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    width: 40%; 
+    background: linear-gradient(to right, transparent, rgb(110, 110, 110), transparent); 
+}
+
+.overlay-text::before {
+    left: 5%; 
+    transform: translateY(-50%);
+}
+
+.overlay-text::after {
+    right: 5%; 
+    transform: translateY(-50%);
+}
+
 .komunat-photo {
     display: flex;
     flex-wrap: wrap;
