@@ -449,21 +449,22 @@ body.dark .search-field i{
     font-size: 45px;
 }
 
-.komunat-photo{
+.komunat-photo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
     column-gap: 20px;
-    height: 500px;
+    height: auto; 
     width: 100%;
     z-index: 1;
-    max-width: 800px; /* Use max-width instead of width */
-    margin: 0 auto; /* Center horizontally */
+    max-width: 800px; 
+    margin: 0 auto; 
     margin-top: 25px;
 }
 
-.komunat-photo img{
+.komunat-photo img {
+    flex: 0 1 auto; 
     height: 60px;
     width: 50px;
     margin: 15px;
