@@ -436,6 +436,41 @@ body.dark .search-field i{
     top: 55%;
 }
 
+.ripped-paper{
+    display: block;
+}
+
+.overlay-text{
+    /* display: block; */
+    text-align: center;
+    position: relative;
+    padding-top: 10px;
+    font-family: 'Balboa';
+    font-size: 45px;
+}
+
+.komunat-photo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    column-gap: 20px;
+    height: 500px;
+    width: 100%;
+    z-index: 1;
+    max-width: 800px; /* Use max-width instead of width */
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 25px;
+}
+
+.komunat-photo img{
+    height: 60px;
+    width: 50px;
+    margin: 15px;
+    z-index: 1;
+}
+
+
 .mapdiv{
     text-align: center;
     margin-top: 150px;
