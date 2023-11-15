@@ -370,12 +370,6 @@ body.dark .search-field i{
     }
 }
 
-
-@media screen and (max-width: 890px) {
-    div.video-background{
-        display: none;
-    }
-}
 .video-background{
     position: relative;
     width: 100%;
@@ -383,8 +377,18 @@ body.dark .search-field i{
     overflow: hidden;
 }
 
+.video-background video{
+    object-fit: cover;
+}
+
 #myVideo{
     width: 100%;
+}
+
+#myPhoto{
+    display: none; 
+    width: 100%;
+    height: auto;
 }
 
 .content{
@@ -426,6 +430,34 @@ body.dark .search-field i{
     transition: 0.3s;
     border: 2px solid #2551b9;
 }
+
+@media (max-width: 768px) {
+    #myVideo{
+        display: none;
+    }
+
+    #myPhoto{
+        display: block;
+        height: 83vh;
+    }
+    .content {
+        top: 50%; 
+    }
+
+    .content h1 {
+        font-size: 40px; 
+    }
+
+    .content p {
+        font-size: 16px; 
+    }
+
+    .content a {
+        font-size: 18px; 
+        padding: 10px 40px; 
+    }
+}
+
 
 
 .paper{
@@ -503,7 +535,7 @@ body.dark .search-field i{
 }
 
 .region-path {
-    fill: transparent; /* Default background color */
+    fill: transparent; 
     transition: fill 0.2s;
 }
 .KS-PR:hover{
