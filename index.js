@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    const slider = document.getElementById('slider');
+    let scrollAmount = 1;
+
+    function scrollSlider() {
+        slider.style.transform = 'translateX(' + -scrollAmount + 'px)';
+        scrollAmount++;
+
+        // Reset to the beginning when reaching the end
+        if (scrollAmount > slider.scrollWidth / 2) {
+            scrollAmount = 1;
+        }
+
+        requestAnimationFrame(scrollSlider);
+    }
+    scrollSlider();
+    
     const body = document.querySelector("body");
     const nav = document.querySelector("nav");
     const modeToggle = document.querySelector(".dark-light");
@@ -42,3 +59,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+

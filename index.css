@@ -523,6 +523,25 @@ body.dark .search-field i{
     z-index: 1;
 }
 
+#slider {
+    display: flex;
+}
+
+#slider-container{
+    max-width: 100%;
+}
+
+#slider-container img{
+    margin-top: 150px;
+    height: 600px;
+    width: 900px;
+}
+
+.slide {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 .mapdiv{
     text-align: center;
