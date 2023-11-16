@@ -45,6 +45,7 @@ body {
     --search-text: #d0d0d0;
     --underline-color: #D0A650;
     --dropdown-background: #ececec;
+    --shiriti-color: #D0A650;
 }
 
 body.dark{
@@ -55,6 +56,7 @@ body.dark{
     --search-bar: #242526;
     --underline-color: #244AA5;
     --dropdown-background: #2c2d2d;
+    --shiriti-color: #fff;
 }
 
 nav{
@@ -537,7 +539,6 @@ body.dark .search-field i{
 }
 
 #slider-container img{
-    margin-top: 150px;
     height: 600px;
     width: 900px;
 }
@@ -546,6 +547,54 @@ body.dark .search-field i{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.shiriti-icon{
+    margin-top: 150px;
+    background-color: var(--nav-color);
+    height: 80px;
+    width: 100%;
+}
+
+.shiriti-fotot{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.shiriti-icon span{
+    font-size: 45px;
+    color: #fff;
+    padding-top: 15px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+.shiriti-poshtem{
+    margin-top: -4px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+}
+
+.shiriti-1{
+    height: 20px;
+    background-color: #244AA5;
+    flex: 1;
+}
+
+.shiriti-2{
+    background-color: #D0A650;
+    height: 20px;
+    flex: 1;
 }
 
 .mapdiv{
@@ -562,6 +611,7 @@ body.dark .search-field i{
     fill: transparent; 
     transition: fill 0.2s;
 }
+
 .KS-PR:hover{
     fill: rgb(94, 212, 252);
     stroke: white;
