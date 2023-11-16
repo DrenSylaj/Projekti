@@ -529,6 +529,11 @@ body.dark .search-field i{
 
 #slider-container{
     max-width: 100%;
+    overflow: auto;
+}
+
+#slider-container::-webkit-scrollbar {
+    display: none;
 }
 
 #slider-container img{
