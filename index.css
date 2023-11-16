@@ -24,6 +24,57 @@ body {
     min-height: 100vh;
   }
 
+  #piece{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
+    cursor: pointer;
+    height: 50vh;
+    max-height: 820px;
+    position: relative;
+    width: calc(50vh * 0.774);
+    margin-left: 150px;
+  }
+  
+
+  .frame-background{
+    height: 500px;
+    width: 100%;
+    background: url(https://www.muraldecal.com/en/img/fomb008-png/folder/products-detalle-png/wall-murals-white-brick-texture.png);
+    display: none;  
+}
+  #frame{
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/141041/banksy-frame.png);
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  
+  #holder{
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/141041/banksy-back.jpg);
+    background-size: cover;
+    height: calc(50vh * 0.69);
+    left: 18.9%;
+    position: absolute;
+    top: 15.4%;
+    width: calc(50vh * 0.774 * 0.617);
+  }
+  
+  #painting{
+    height: 100%;
+    position: absolute;
+    transform: translateY(0%);
+    width: 100%;
+  }
+  
+  #original{
+    background: url(https://i.redd.it/ewvjfgkmhw781.jpg);
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 *{
