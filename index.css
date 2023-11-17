@@ -31,15 +31,18 @@ body {
     max-height: 820px;
     position: relative;
     width: calc(50vh * 0.774);
-    margin-left: 150px;
+    margin-top: 12px;
   }
   
 
   .frame-background{
-    height: 500px;
+    display: none;
+    margin-top: 150px;
+    align-items: center;
+    justify-content: space-around;
+    height: 600px;
     width: 100%;
     background: url(https://www.muraldecal.com/en/img/fomb008-png/folder/products-detalle-png/wall-murals-white-brick-texture.png);
-    display: none;  
 }
   #frame{
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/141041/banksy-frame.png);
@@ -73,6 +76,24 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
+  }
+
+  #original2{
+    background: url(https://www.delcampe.net/static/img_large/auction/000/546/115/985_001.jpg);
+    background-size: cover;
+    height: 101%;
+    position: absolute;
+    top: 0;
+    width: 101%;
+  }
+
+  #original1{
+    background: url(https://pbs.twimg.com/media/EkU1uCBWoAAF_4f.jpg);
+    background-size: cover;
+    height: 101%;
+    position: absolute;
+    top: 0;
+    width: 101%;
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
