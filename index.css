@@ -1,12 +1,20 @@
 @font-face {
     font-family: 'Futura';
     src: url(fonts/FuturaNowHeadlineMedium.ttf);
+}
+@font-face{
     font-family: 'TruenoRound';
     src: url(fonts/TruenoRound.otf);
 }
+
 @font-face {
     font-family: 'Balboa';
     src: url(fonts/FontsFree-Net-Balboa-W01-Bold.ttf);
+}
+
+@font-face{
+    font-family: 'Lobster';
+    src: url(fonts/Lobster-Regular.ttf);
 }
 
 *{
@@ -33,11 +41,19 @@ body {
     width: calc(50vh * 0.774);
     margin-top: 12px;
   }
-  
+
+
+  .foto-1{
+    margin-top: 150px;
+  }
+
+  .pattern img{
+    height: 125px;
+    width: 100%;
+  }
 
   .frame-background{
-    display: none;
-    margin-top: 150px;
+    display: flex;
     align-items: center;
     justify-content: space-around;
     height: 600px;
