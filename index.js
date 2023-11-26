@@ -60,3 +60,61 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+function openLoginForm() {
+    document.getElementById("formTitle").innerText = "Login";
+    document.getElementById("signupLink").style.display = "block";
+    document.getElementById("loginContainer").style.display = "flex";
+}
+
+function closeLoginForm() {
+    document.getElementById("formTitle").innerText = "Login";
+    document.getElementById("signupLink").style.display = "block";
+    document.getElementById("loginContainer").style.display = "none";
+}
+
+function openSignupForm() {
+    document.getElementById("formTitle").innerText = "Sign Up";
+    document.getElementById("signupLink").style.display = "none";
+    document.getElementById("loginContainer").style.display = "none";
+    document.getElementById("signupContainer").style.display = "flex";
+}
+
+function closeSignupForm() {
+    document.getElementById("formTitle").innerText = "Login";
+    document.getElementById("signupLink").style.display = "block";
+    document.getElementById("loginContainer").style.display = "flex";
+    document.getElementById("signupContainer").style.display = "none";
+}
+
+function validateLoginForm() {
+    var username = document.getElementById("custom-username").value;
+    var password = document.getElementById("custom-password").value;
+
+    if (username.trim() === "" || password.trim() === "") {
+        alert("Username and password are required for login.");
+        return false;
+    }
+
+
+    return true;
+}
+
+function validateSignupForm() {
+    var username = document.getElementById("signup-username").value;
+    var email = document.getElementById("signup-email").value;
+    var password = document.getElementById("signup-password").value;
+
+    if (username.trim() === "" || email.trim() === "" || password.trim() === "") {
+        alert("All fields are required for sign-up.");
+        return false;
+    }
+
+    // Validate email format
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    return true;
+}

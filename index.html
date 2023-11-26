@@ -43,7 +43,7 @@
                 </div> 
                 <li><a href="#more">MORE</a></li>
                 <li><a href="#about us">ABOUT US</a></li>
-                <li><a href="#login">LOG IN</a></li>
+                <li><a href="#" onclick="openLoginForm()">LOG IN</a></li>
             </ul>
         </div>
         <div class="darkLight-searchBox">
@@ -107,6 +107,42 @@
           <span class="material-symbols-outlined">star</span>
         </div>
       </div>
+
+
+      <div class="login-container" id="loginContainer">
+        <div class="custom-login-form">
+            <span class="close-btn" onclick="closeLoginForm()">&times;</span>
+            <h2 id="formTitle">Login</h2>
+            <form action="#" method="post" onsubmit="return validateLoginForm()" action="index.html">
+                <label for="custom-username">Username:</label>
+                <input type="text" id="custom-username" name="custom-username" class="custom-input" required>
+                
+                <label for="custom-password">Password:</label>
+                <input type="password" id="custom-password" name="custom-password" class="custom-input" required>
+                <p id="signupLink">Don't have an account? <a href="#" onclick="openSignupForm()">Sign up</a></p>
+                
+                <button type="submit" class="custom-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="signup-container" id="signupContainer">
+        <div class="custom-signup-form">
+            <span class="close-btn" onclick="closeSignupForm()">&times;</span>
+            <h2>Sign Up</h2>
+            <form action="#" method="post" onsubmit="return validateSignupForm();">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="signup-username" class="custom-input" required>
+                
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="signup-email" class="custom-input" required>
+
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="signup-password" class="custom-input" required>
+                <button type="submit" class="custom-button">Sign Up</button>
+            </form>
+        </div>
+    </div>
 
       <div id="slider-container">
         <div id="slider">
