@@ -22,6 +22,11 @@
     src: url(fonts/Singo\ Regular.otf);
 }
 
+@font-face {
+    font-family: 'Frank';
+    src: url(fonts/FrankRuhlLibre-Regular.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -48,7 +53,8 @@ body {
 
 
   .foto-1{
-    margin-top: 150px;
+    margin-top: 50px;
+    margin-bottom: -5px;
   }
 
   .pattern img{
@@ -675,6 +681,44 @@ body.dark .search-field i{
     height: 40px;
     width: 100%;
     display: flex;
+}
+
+.overlay-text2{
+    margin-top: 150px;
+    text-align: center;
+    position: relative;
+    padding-top: 10px;
+    font-family: 'Balboa';
+    font-size: 45px;
+}
+
+.overlay-text2::before,
+.overlay-text2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    width: 38%; 
+    background: linear-gradient(to right, transparent, rgb(110, 110, 110), transparent); 
+}
+
+.overlay-text2::before {
+    left: 5%; 
+    transform: translateY(-50%);
+}
+
+.overlay-text2::after {
+    right: 5%; 
+    transform: translateY(-50%);
+}
+
+.paragraph2{
+    margin-top: 5px;
+    text-align: center;
+    font-family: 'Frank';
+    font-size: 28px;
+    color: gray;
+    letter-spacing: 0.5px;
 }
 
 .shiriti-1{
