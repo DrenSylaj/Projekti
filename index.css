@@ -734,16 +734,11 @@ body.dark .search-field i{
 }
 
 .image-gallery{
-    align-items: center;
+    padding-left: 200px;
+    margin-top: 60px;
     display: grid;
     grid-template-columns: repeat(3, 500px);
-    max-width: 50rem;
-}
-
-.image-gallery img{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-inline: auto;
 }
 
 .image-gallery > img{
