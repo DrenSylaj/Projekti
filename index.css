@@ -811,14 +811,14 @@ body.dark .search-field i{
 
 
 .mapdiv{
-    display: none;
     text-align: center;
-    margin-top: 150px;
-}
+    max-width: 100%;
+    margin-top: 55px;
+}  
 
 .mapdiv path{
-    stroke: black;
-    stroke-width: 3px;
+    stroke: rgb(52, 52, 52);
+    stroke-width: 2.5px;
 }
 
 .region-path {
@@ -828,38 +828,32 @@ body.dark .search-field i{
 
 .KS-PR:hover{
     fill: rgb(94, 212, 252);
-    stroke: white;
 }
 
 .KS-MR:hover{
     fill: green;
-    stroke: black;
 }
 
 .KS-PZ:hover{
     fill: orange;
-    stroke: black;
 }
 
 .KS-PE:hover{
     fill: red;
-    stroke: white;
 }
 
 .KS-FE:hover{
     fill: blue;
-    stroke: white;
 }
 
 .KS-GL:hover{
     fill: #d1281c;
-    stroke: white;
 }
 
 .KS-GJ:hover{
     fill: #ba271d;
-    stroke: black;
 }
+
 .region-name {
     display: none;
     position: absolute;
@@ -954,7 +948,7 @@ label {
     padding:30px 0px;
     font-family: 'Play', sans-serif;
     text-align:center;
-    margin-top: 30px;
+    margin-top: 100px;
     }
     
     .footer .row{
@@ -1002,4 +996,9 @@ label {
     .footer .row a i{
     margin:0% 3%;
     }
+    }
+
+    .map-text{
+        font-family: 'TruenoRound';
+        font-size: medium;
     }
