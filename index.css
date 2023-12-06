@@ -41,7 +41,27 @@ body {
     min-height: 100vh;
   }
 
-  #piece{
+  #piece-1{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
+    cursor: pointer;
+    height: 50vh;
+    max-height: 820px;
+    position: relative;
+    width: calc(50vh * 0.774);
+    margin-top: 12px;
+  }
+
+  #piece-2{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
+    cursor: pointer;
+    height: 50vh;
+    max-height: 820px;
+    position: relative;
+    width: calc(50vh * 0.774);
+    margin-top: 12px;
+  }
+
+  #piece-3{
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
     cursor: pointer;
     height: 50vh;
@@ -556,6 +576,14 @@ body.dark .search-field i{
         font-size: 18px; 
         padding: 10px 40px; 
     }
+
+    #piece-2{
+        display: none;
+    }
+
+    #piece-3{
+        display: none;
+    }
 }
 
 
@@ -759,7 +787,10 @@ body.dark .search-field i{
     .image-gallery{
         grid-template-columns: repeat(1, 500px);
     }
+
 }
+
+
 .mapdiv{
     display: none;
     text-align: center;
