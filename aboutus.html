@@ -19,15 +19,15 @@
               <div>
                 <img src="fotot/Emblem_of_the_Republic_of_Kosovo.svg.png" alt="logo" class="logo">
               </div>
-              <span class="logo navLogo"><a href="#">KOSOVA</a></span>
+              <span class="logo navLogo"><a href="index.html">KOSOVA</a></span>
             </div>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="#">Dardania</a></span>
+                    <span class="logo"><a href="index.html">Dardania</a></span>
                     <i class='bx bx-x siderbarClose'></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#top">HOME</a></li>
+                    <li><a href="index.html">HOME</a></li>
                     <div class="dropdown">
                       <button class="dropbtn">CITIES
                         <i class="fa fa-caret-down"></i>
@@ -86,6 +86,41 @@
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
+    </div>
+
+    <div class="login-container" id="loginContainer">
+        <div class="custom-login-form">
+            <span class="close-btn" onclick="closeLoginForm()">&times;</span>
+            <h2 id="formTitle">Login</h2>
+            <form action="#" method="post" onsubmit="return validateLoginForm()" action="index.html">
+                <label for="custom-username">Username:</label>
+                <input type="text" id="custom-username" name="custom-username" class="custom-input" required>
+                
+                <label for="custom-password">Password:</label>
+                <input type="password" id="custom-password" name="custom-password" class="custom-input" required>
+                <p id="signupLink">Don't have an account? <a href="#" onclick="openSignupForm()">Sign up</a></p>
+                
+                <button type="submit" class="custom-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="signup-container" id="signupContainer">
+        <div class="custom-signup-form">
+            <span class="close-btn" onclick="closeSignupForm()">&times;</span>
+            <h2>Sign Up</h2>
+            <form action="#" method="post" onsubmit="return validateSignupForm();">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="signup-username" class="custom-input" required>
+                
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="signup-email" class="custom-input" required>
+
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="signup-password" class="custom-input" required>
+                <button type="submit" class="custom-button">Sign Up</button>
+            </form>
+        </div>
     </div>
 
     <footer>

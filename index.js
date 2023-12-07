@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
         slider.style.transform = 'translateX(' + -scrollAmount + 'px)';
         scrollAmount++;
 
-        // Reset to the beginning when reaching the end
         if (scrollAmount > slider.scrollWidth / 2) {
             scrollAmount = 1;
         }
@@ -109,7 +108,6 @@ function validateSignupForm() {
         return false;
     }
 
-    // Validate email format
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert("Please enter a valid email address.");
