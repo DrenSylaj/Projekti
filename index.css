@@ -1002,3 +1002,42 @@ label {
         font-family: 'TruenoRound';
         font-size: medium;
     }
+
+    .image-background{
+        position: relative;
+        width: 100%;
+        height: 63vh;
+        overflow: hidden;
+    }
+
+    .image-background img{
+        position: relative;
+        height: 900px;
+        width: 100%;
+        top: -25%;
+    }
+
+    .paper2{
+        height: 30vh;
+        width: 100%;
+        position:absolute;
+        min-height:30px;
+        top: 40%;
+    }
+
+    .text-container{
+        display: flex;
+        width: 100%;
+        margin-top: 55px;
+        margin-bottom: 55px;
+        justify-content: space-around;
+        padding-right: 550px;
+        padding-left: 550px;
+    }
+
+    .text-container p{
+        text-align: center;
+        font-size: 16px;
+        font-weight: 200;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
