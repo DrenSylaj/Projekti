@@ -811,8 +811,6 @@ body.dark .search-field i{
     display: flex;
     flex-wrap: wrap;
     margin-top: 55px;
-    margin-left: 150px;
-    margin-right: 150px;
   }
   
   .--photo {
