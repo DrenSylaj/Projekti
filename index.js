@@ -85,34 +85,37 @@ function closeSignupForm() {
     document.getElementById("signupContainer").style.display = "none";
 }
 
-function validateLoginForm() {
-    var username = document.getElementById("custom-username").value;
-    var password = document.getElementById("custom-password").value;
 
-    if (username.trim() === "" || password.trim() === "") {
-        alert("Username and password are required for login.");
+function validateLoginForm() {
+    var username = document.getElementById('custom-username').value;
+    var password = document.getElementById('custom-password').value;
+
+    if (username.trim() === '' || password.trim() === '') {
+        alert('Please enter both username and password.');
         return false;
     }
-
 
     return true;
 }
 
 function validateSignupForm() {
-    var username = document.getElementById("signup-username").value;
-    var email = document.getElementById("signup-email").value;
-    var password = document.getElementById("signup-password").value;
+    var signupUsername = document.getElementById('signup-username').value;
+    var signupEmail = document.getElementById('signup-email').value;
+    var signupPassword = document.getElementById('signup-password').value;
 
-    if (username.trim() === "" || email.trim() === "" || password.trim() === "") {
-        alert("All fields are required for sign-up.");
+    if (signupUsername.trim() === '' || signupPassword.trim() === '') {
+        alert('Please fill in all required fields.');
         return false;
     }
 
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address.");
+    if (!emailRegex.test(signupEmail)) {
+        alert('Please enter a valid email address.');
         return false;
     }
 
+
     return true;
 }
+
+

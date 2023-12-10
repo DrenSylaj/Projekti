@@ -250,6 +250,14 @@ nav .nav-bar .logo a{
     /* margin-right: 75px; */
 }
 
+.login-logo a{
+  font-size: 25px;
+    font-weight: 700;
+    color: #D0A650;
+    text-decoration: none;
+    user-select: none;
+}
+
 .menu .logo-toggle{
     display: none;
 }
@@ -638,10 +646,18 @@ body.dark .search-field i{
   #myVideo{
     display: none;
   }
+
+  .overlay-text2{
+    display: none;
+  }
   
   #myPhoto2{
     display: block;
     height: 83vh;
+  }
+
+  #bc-photo{
+    display: none;
   }
 }
 
@@ -673,8 +689,9 @@ body.dark .search-field i{
     display: block;
   }
 
-  .mapdiv{
-    display: none;
+
+  .table{
+    display: block;
   }
 }
 
@@ -976,19 +993,27 @@ body.dark .search-field i{
 
 .custom-login-form,
 .custom-signup-form {
+    border: 3px solid #244AA5;
     background: #fff;
-    padding: 20px;
-    width: 300px;
+    padding: 80px;
+    width: 400px;
+    height: 500px;
     text-align: center;
     border-radius: 8px;
     position: relative;
 }
 
+#costume-username,
+#costume-password{
+  color: #244AA5;
+}
+
 .close-btn {
     position: absolute;
+    color: #244AA5;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 35px;
     cursor: pointer;
 }
 
@@ -997,24 +1022,38 @@ label {
     margin: 10px 0;
 }
 
+#formTitle{
+  font-size: 22px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.custom-login-form img{
+  margin-top: -20px;
+  width: 90px;
+  height: 60px;
+}
 .custom-input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
 
 .custom-button {
-    background: #4caf50;
+    background: var(--underline-color);
     color: #fff;
-    padding: 10px;
+    margin-top: 15px;
+    width: 95px;
+    height: 45px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .custom-button:hover {
-    background: #45a049;
+    background: #D0A650;
 }
 
 #signupLink {
@@ -1022,7 +1061,7 @@ label {
 }
 
 #signupLink a {
-    color: #007BFF;
+    color: #D0A650;
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
@@ -1099,6 +1138,13 @@ label {
         overflow: hidden;
     }
 
+    #ovr-img{
+      position: relative;
+        height: 200px;
+        width: 100%;
+        top: -25%;
+    }
+
     .image-background img{
         position: relative;
         height: 900px;
@@ -1115,16 +1161,16 @@ label {
     }
 
     .text-container{
-        display: flex;
+      display: flex;
+      justify-content: center;
         width: 100%;
         margin-top: 55px;
         margin-bottom: 55px;
-        justify-content: space-around;
-        padding-right: 550px;
-        padding-left: 550px;
     }
 
     .text-container p{
+      
+      width: 600px;
         text-align: center;
         font-size: 20px;
         color: #434343;
@@ -1239,7 +1285,7 @@ label {
   background-color: var(--brand-color);
 }
 
-.card__button {
+.card__button{
   padding: 0.75em 1.6em;
   width: fit-content;
   width: -moz-fit-content; 
@@ -1248,9 +1294,13 @@ label {
   border-radius: 0.45em;
   border: none;
   background-color: var(--brand-color);
+}
+
+.card__button a{
   font-family: var(--font-title);
   font-size: 1.125rem;
   color: var(--black);
+  text-decoration: none;
 }
 
 .card__button:focus {
@@ -1350,6 +1400,7 @@ label {
   }
 
   .table {
+    display: none;
     max-width: 490px;
     width: 100%;
     border-radius: 12px;
