@@ -32,6 +32,11 @@
     src: url(fonts/SeroPro.ttf);
 }
 
+@font-face{
+    font-family: 'Monster';
+    src: url(fonts/MonsterBites-BWmrd.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -528,6 +533,22 @@ body.dark .search-field i{
     user-select: none;
 }
 
+.content2{
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content2 h1{
+    font-size: 120px;
+    font-weight: 900;
+    letter-spacing: 30px;
+    color: white;
+    font-family: 'Balboa';
+}
+
 .content h1{
     font-size: 60px;
     font-weight: 200;
@@ -785,34 +806,61 @@ body.dark .search-field i{
     flex: 1;
 }
 
-.image-gallery{
-    padding-left: 200px;
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(3, 500px);
-    margin-inline: auto;
-}
-
-.image-gallery > img{
-    width: 100%;
-    aspect-ratio: 1/1;
+.image-gallery {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 55px;
+    margin-left: 150px;
+    margin-right: 150px;
+  }
+  
+  .--photo {
+    height: 40vh;
+    flex-grow: 1;
+  }
+  
+  .--photo:last-child {
+    flex-grow: 10;
+  }
+  
+  .image-gallery img {
+    max-height: 100%;
+    min-width: 100%;
     object-fit: cover;
-
-    transition: scale 350ms ease, opacity 350ms linear;
-}
-
-.image-gallery:has(img:hover) > img:not(:hover){
-    scale: .8;
-    opacity: .7;
-}
-
-
-@media (max-width: 756px) {
-    .image-gallery{
-        grid-template-columns: repeat(1, 500px);
+    vertical-align: bottom;
+  }
+  
+  
+  @media (max-aspect-ratio: 1/1) {
+    .--photo {
+      height: 30vh;
     }
+  }
 
-}
+  
+  @media (max-height: 480px) {
+    .--photo {
+      height: 80vh;
+    }
+  }
+
+  
+  @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    .image-gallery {
+      flex-direction: row;
+    }
+  
+    .--photo {
+      height: auto;
+      width: 100%;
+    }
+    .image-gallery img{
+      width: 100%;
+      max-height: 75vh;
+      min-width: 0;
+    }
+  }
 
 
 .mapdiv{
@@ -1019,7 +1067,7 @@ label {
         position: relative;
         height: 900px;
         width: 100%;
-        top: -25%;
+        top: -45%;
     }
 
     .paper2{
@@ -1084,11 +1132,10 @@ label {
 }
 
 .card-containter{
-    padding-left: 200px;
     margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(3, 500px);
-    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .flow > * + * {
@@ -1097,9 +1144,7 @@ label {
 
 
 .card {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 55px;
+  margin: 0 20px 20px 20px;
   display: grid;
   place-items: center;
   width: 80vw;
@@ -1108,6 +1153,7 @@ label {
   overflow: hidden;
   border-radius: 0.625rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  width: 100%;
 }
 
 .card > * {
@@ -1289,7 +1335,7 @@ th:last-child {
 tr{
     text-decoration: none;
   border-top: 1px solid #C1C3D1;
-  border-bottom-: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
   color:#666B85;
   font-size:16px;
   font-weight:normal;
@@ -1314,9 +1360,15 @@ tr:nth-child(odd) td {
   background:#EBEBEB;
 }
  
-tr:nth-child(odd):hover td {
-  background:#4E5066;
+tr:nth-child(even):hover td {
+  background: rgb(145, 145, 145);
+  color: white;
 }
+
+tr:nth-child(odd):hover td {
+    background: rgb(145, 145, 145);
+    color: white;
+  }
 
 tr:last-child td:first-child {
   border-bottom-left-radius:3px;
@@ -1349,26 +1401,35 @@ th.text-center {
   text-align: center;
 }
 
-th.text-right {
-  text-align: right;
-}
-
-td.text-left {
-  text-align: center;
-}
-
 td.text-center {
   text-align: center;
-}
-
-td.text-right {
-  text-align: right;
 }
 
 .map-container{
     display: flex;
     justify-content: center;
 }
+
+.image-container2 img{
+    margin-top: 10px;
+    margin-left: 250px;
+    height: 450px;
+    width: 350px;
+}
+
+.text-container2{
+    margin-right: 500px;
+    float: right;
+    width: 500px;
+  }
+
+  .text-container2 p{
+    font-family: 'Sero';
+    font-size: 20px;
+    color: #595959;
+  }
+
+
 
 
 
