@@ -1,3 +1,7 @@
+<?php 
+include('navbar.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,60 +16,6 @@
     <title>KosovoCityTour</title>
   </head>
 <body>
-  <nav>
-    <div class="nav-bar">
-        <i class='bx bx-menu sidebarOpen' ></i>
-        <div class="logo-KS">
-          <div>
-            <img src="fotot/Emblem_of_the_Republic_of_Kosovo.svg.png" alt="logo" class="logo">
-          </div>
-          <span class="logo navLogo"><a href="#">KOSOVA</a></span>
-        </div>
-        <div class="menu">
-            <div class="logo-toggle">
-                <span class="logo"><a href="#">Dardania</a></span>
-                <i class='bx bx-x siderbarClose'></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#top">HOME</a></li>
-                <div class="dropdown">
-                  <button class="dropbtn">CITIES
-                    <i class="fa fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content">
-                    <a href="Prishtina.html">Prishtina</a>
-                    <a href="Prizren.html">Prizreni</a>
-                    <a href="Peja.html">Peja</a>
-                    <a href="Gjakova.html">Gjakova</a>
-                    <a href="Ferizaj.html">Ferizaji</a>
-                    <a href="Mitrovica.html">Mitrovica</a>
-                    <a href="Gjilan.html">Gjilani</a>
-                  </div>
-                </div> 
-                <li><a href="aboutus.html">ABOUT US</a></li>
-                <li><a href="#" onclick="openLoginForm()">LOG IN</a></li>
-            </ul>
-        </div>
-        <div class="darkLight-searchBox">
-            <div class="dark-light">
-                <i class='bx bx-moon moon'></i>
-                <i class='bx bx-sun sun'></i>
-            </div>
-            <div class="searchBox">
-               <div class="searchToggle">
-                <i class='bx bx-x cancel'></i>
-                <i class='bx bx-search search'></i>
-               </div>
-                <div class="search-field">
-                    <input type="text" placeholder="Search...">
-                    <i class='bx bx-search'></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-
-    
   <div class="video-background">
     <video autoplay muted loop plays-inline id="myVideo">
         <source src="video/KosovaVIDEO.mp4" type="video/mp4">
@@ -379,29 +329,8 @@
   </article>
   </div>
 </div>
-  
-  
-
-    <footer>
-      <div class="footer">
-      <div class="row">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
-      <a href="#"><i class="fa fa-youtube"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      </div>
-      
-      <div class="row">
-      <ul>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Contact Us</a></li>
-      </ul>
-      </div>
-      
-      <div class="row">
-      DS BM Copyright © 2023 - All rights reserved || Designed By: Dren Sylaj & Blert Mulaj
-      </div>
-      </div>
-      </footer>
 </body>
 </html>
+<?php 
+include('footer.php');
+?>
