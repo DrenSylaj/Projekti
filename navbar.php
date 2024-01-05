@@ -22,19 +22,19 @@ include('authentication.php');
                 <i class='bx bx-x siderbarClose'></i>
             </div>
             <ul class="nav-links">
-                <li><a href="#top">HOME</a></li>
+                <li><a href="index.php">HOME</a></li>
                 <div class="dropdown">
                   <button class="dropbtn">CITIES
                     <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">
-                    <a href="Prishtina.html">Prishtina</a>
-                    <a href="Prizren.html">Prizreni</a>
-                    <a href="Peja.html">Peja</a>
-                    <a href="Gjakova.html">Gjakova</a>
-                    <a href="Ferizaj.html">Ferizaji</a>
-                    <a href="Mitrovica.html">Mitrovica</a>
-                    <a href="Gjilan.html">Gjilani</a>
+                    <a href="city.php?selectedCity=Prishtina">Prishtina</a>
+                    <a href="city.php?selectedCity=Prizreni">Prizreni</a>
+                    <a href="city.php?selectedCity=Peja">Peja</a>
+                    <a href="city.php?selectedCity=Gjakova">Gjakova</a>
+                    <a href="city.php?selectedCity=Ferizaji">Ferizaji</a>
+                    <a href="city.php?selectedCity=Mitrovica">Mitrovica</a>
+                    <a href="city.php?selectedCity=Gjilani">Gjilani</a>
                   </div>
                 </div> 
                 <li><a href="aboutus.html">ABOUT US</a></li>
