@@ -1,7 +1,12 @@
+<?php
+include('authentication.php');
+?>
+
 <link rel="stylesheet" href="index.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png">
+    <style src="index.js"></style>
 <nav>
     <div class="nav-bar">
         <i class='bx bx-menu sidebarOpen' ></i>
@@ -33,7 +38,14 @@
                   </div>
                 </div> 
                 <li><a href="aboutus.html">ABOUT US</a></li>
-                <li><a href="#" onclick="openLoginForm()">LOG IN</a></li>
+                <li><a href="dashboard.php">DASHBOARD</a></li>
+                <?php if(!isset($_SESSION['authenticated'])) :?>
+                <li><a href="registration.php">LOG IN</a></li>
+                <?php endif ?>
+
+                <?php if(isset($_SESSION['authenticated'])) :?>
+                <li><a href="logout.php">LOG OUT</a></li>
+                <?php endif ?>
             </ul>
         </div>
         <div class="darkLight-searchBox">

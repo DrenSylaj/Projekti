@@ -1,9 +1,14 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="index.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
@@ -191,14 +196,22 @@ form
 <h1 class="logoK">KOSOVA</h1>
 </div>
 <div class="registration">
+  <div class="alert">
+    <?php
+      if(isset($_SESSION['status'])){
+        echo"<h4>".$_SESSION['status']."</h4>";
+        unset($_SESSION['status']);
+      }
+    ?>
+  </div>
     <section class="wrapper">
       <div class="form signup">
         <header>Signup</header>
         <form action="validation.php" method="POST">
-          <input type="text" placeholder="Emri" name="name" required />
-          <input type="text" placeholder="Mbiemri" name="surname" required />
-          <input type="text" placeholder="Email address" name="email" required />
-          <input type="password" placeholder="Password" name="password" required />
+          <input type="text" id="signup_name" placeholder="Emri" name="name" required />
+          <input type="text" id="signup_surname" placeholder="Mbiemri" name="surname" required />
+          <input type="text" id="signup_email" placeholder="Email address" name="email" required />
+          <input type="password" id="signup_password" placeholder="Password" name="password" required />
           <div class="checkbox">
             <input type="checkbox" id="signupCheck" />
             <label for="signupCheck">I accept all terms & conditions</label>
@@ -208,11 +221,11 @@ form
       </div>
       <div class="form login">
         <header>Login</header>
-        <form action="#">
-          <input type="text" placeholder="Email address" required />
-          <input type="password" placeholder="Password" required />
+        <form action="validationL.php" method="POST">
+          <input type="text" id="name" placeholder="Email address" name="email" required />
+          <input type="password" id="password" placeholder="Password" name="password" required />
           <a href="#">Forgot password?</a>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" name="login_btn"/>
         </form>
       </div>
       <script>

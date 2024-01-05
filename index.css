@@ -1375,7 +1375,7 @@ label {
 
 
 .image-container2 img{
-    margin-top: 10px;
+    margin-top: 110px;
     margin-left: 250px;
     height: 450px;
     width: 350px;
@@ -1512,6 +1512,16 @@ label {
     margin-left: 3px;
   }
 
+  .user_dashboard{
+    text-align: center;
+    margin-top: 550px;
+    width: 800px;
+    height: 300px;
+  }
+
+  .user_dashboard h1{
+    color: red;
+  }
   
   
 

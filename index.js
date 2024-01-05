@@ -59,39 +59,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function openLoginForm() {
-    document.getElementById("formTitle").innerText = "Login";
-    document.getElementById("signupLink").style.display = "block";
-    document.getElementById("loginContainer").style.display = "flex";
-}
-
-function closeLoginForm() {
-    document.getElementById("formTitle").innerText = "Login";
-    document.getElementById("signupLink").style.display = "block";
-    document.getElementById("loginContainer").style.display = "none";
-}
-
-function openSignupForm() {
-    document.getElementById("formTitle").innerText = "Sign Up";
-    document.getElementById("signupLink").style.display = "none";
-    document.getElementById("loginContainer").style.display = "none";
-    document.getElementById("signupContainer").style.display = "flex";
-}
-
-function closeSignupForm() {
-    document.getElementById("formTitle").innerText = "Login";
-    document.getElementById("signupLink").style.display = "block";
-    document.getElementById("loginContainer").style.display = "flex";
-    document.getElementById("signupContainer").style.display = "none";
-}
-
-
 function validateLoginForm() {
-    var username = document.getElementById('custom-username').value;
-    var password = document.getElementById('custom-password').value;
+    var email = document.getElementById('signup_email').value;
+    var name = document.getElementById('signup_username').value;
+    var surname = document.getElementById('signup_surname').value;
+    var password = document.getElementById('signup_password').value;
 
-    if (username.trim() === '' || password.trim() === '') {
+    if (name.trim() === '' || surname.trim() === '' || password.trim() === '' || email.trim()=== '') {
         alert('Please enter both username and password.');
+        return false;
+    }
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRegex.test(email)){
         return false;
     }
 
