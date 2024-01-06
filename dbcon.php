@@ -1,4 +1,4 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "projekti");
+$con = mysqli_connect("localhost", "root", "", "projektiKCT");
 
 ?>

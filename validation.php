@@ -14,6 +14,7 @@ if(isset($_POST['signup_btn'])){
 
     if(mysqli_num_rows($check_email_query_run) > 0){
         $_SESSION['status'] = "Email ID already exists";
+        $_SESSION['status_type'] = 'error';
         header("Location:registration.php");
     }
     else{
@@ -22,10 +23,12 @@ if(isset($_POST['signup_btn'])){
 
         if($query_run){
             $_SESSION['status'] = "Registration successful.";
+            $_SESSION['status_type'] = 'success';
             header("Location:registration.php");
         }
         else{
             $_SESSION['status'] = "Registration failed.";
+            $_SESSION['status_type'] = 'error';
             header("Location:registration.php");
         }
     }

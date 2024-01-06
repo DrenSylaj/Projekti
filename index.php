@@ -39,13 +39,13 @@ include('navbar.php');
       </div>
 
       <div class="komunat-photo">
-        <img src="/fotot/Logo(Komunat)/Stema_e_Komunës_Prishtinë.png" alt="">
-        <img src="/fotot/Logo(Komunat)/639px-Stema_e_Komunës_Prizren.png" alt="" style="height: 60px; width: 60px;">
-        <img src="/fotot/Logo(Komunat)/434px-Stema_e_Komunës_Pejë.png" alt="">
-        <img src="/fotot/Logo(Komunat)/Stema_e_Komunës_Gjakovë.png" alt="">
-        <img src="/fotot/Logo(Komunat)/467px-Stema_e_Komunës_Gjilan.png" alt="">
-        <img src="/fotot/Logo(Komunat)/452px-Stema_e_Komunës_Mitrovicë.png" alt="">
-        <img src="/fotot/Logo(Komunat)/Logo_ferizaj.jpg" alt="" class="ferizaj" style="height: 65px; width: 50px;">
+        <img src="/fotot/logo/Stema_e_Komunës_Prishtinë.png" alt="">
+        <img src="/fotot/logo/639px-Stema_e_Komunës_Prizren.png" alt="" style="height: 60px; width: 60px;">
+        <img src="/fotot/logo/434px-Stema_e_Komunës_Pejë.png" alt="">
+        <img src="/fotot/logo/Stema_e_Komunës_Gjakovë.png" alt="">
+        <img src="/fotot/logo/467px-Stema_e_Komunës_Gjilan.png" alt="">
+        <img src="/fotot/logo/452px-Stema_e_Komunës_Mitrovicë.png" alt="">
+        <img src="/fotot/logo/Logo_ferizaj.jpg" alt="" class="ferizaj" style="height: 65px; width: 50px;">
       </div>
       
       <div class="shiriti-icon">

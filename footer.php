@@ -6,10 +6,10 @@
 <footer>
       <div class="footer">
       <div class="row">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
-      <a href="#"><i class="fa fa-youtube"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/ubthighereducationinstitution"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.instagram.com/ubt_official/"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@UBTPRISHTINA"><i class="fa fa-youtube"></i></a>
+      <a href="https://fj.linkedin.com/school/ubt---university-for-business-and-technology/"><i class="fa fa-linkedin"></i></a>
       </div>
       
       <div class="row">

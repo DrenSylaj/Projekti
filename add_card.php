@@ -19,7 +19,7 @@ if(isset($_POST['submit_btn'])){
         exit(0);
     }
     else{
-        $query = "INSERT INTO $type (title, description, image, city_id) VALUES ('$title', '$description', '$image', '$city_id')";
+        $query = "INSERT INTO $type (title, description, image_url, city_id) VALUES ('$title', '$description', '$image', '$city_id')";
         $query_run = mysqli_query($con, $query);
 
         if($query_run){

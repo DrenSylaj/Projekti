@@ -189,6 +189,30 @@ form
   color: #fff;
   border: none;
 }
+
+.status {
+        padding: 20px;
+        text-align: center;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        }
+
+        .success {
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
     </style>
 <body>
 <div class="logo2">
@@ -199,8 +223,11 @@ form
   <div class="alert">
     <?php
       if(isset($_SESSION['status'])){
-        echo"<h4>".$_SESSION['status']."</h4>";
+        $statusMessage = $_SESSION['status'];
+        $statusClass = ($_SESSION['status_type'] == 'success') ? 'success' : 'error';
         unset($_SESSION['status']);
+        unset($_SESSION['status_type']);
+        echo "<div class='$statusClass'>$statusMessage</div>";
       }
     ?>
   </div>

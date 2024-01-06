@@ -35,7 +35,7 @@ class City {
             <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
             <link rel='icon' type='image/x-icon' href='/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png'>
-            <title>{$this->name} CityTour ꞏ {$this->name}</title>
+            <title>KosovoCityTour ꞏ {$this->name}</title>
         </head>
         <body>
 
@@ -121,30 +121,38 @@ class City {
         ";
     }
 }
+$query = "SELECT * FROM visit";
+$result = mysqli_query($con, $query);
+$placesToVisit = [];
+$cardDescriptions = [];
+$image_background = [];
+while($row = mysqli_fetch_assoc($result)){
+    $placesToVisit[] = $row['title'];
+    $cardDescriptions[] = $row['description'];
+    $image_background[] = $row['image_url'];
+}
 
-$citiesData = [
-    "Prishtina" => [
-        "name" => "Prishtina",
+$query_2 = "SELECT emriQytetit FROM cities";
+$result_2 = mysqli_query($con, $query_2); 
+$qyteti = [];
+while ($row_2 = mysqli_fetch_assoc($result_2)) {
+    $qyteti[] = $row_2['emriQytetit']; 
+}
+
+$citiesData = [];
+
+foreach($qyteti as $cityName){ 
+    $citiesData[$cityName] = [
+        "name" => $cityName,
         "description" => "Pristina is the capital and largest city of Kosovo with a population of more than 200,000 people...",
         "image" => 'fotot/pristina-kosovo-travel-photo-20230417173342682-main-image.jpg',
-        "image_background" => ['fotot/pristina-kosovo-travel-photo-20230417173342682-main-image.jpg', 'fotot/pristina-kosovo-travel-photo-20230417173342682-main-image.jpg'],
-        "placesToVisit" => ["Place 1", "Place 2", "Place 3"],
-        "cardDescriptions" => ["Description 1 sadsasdasdas  sadsadasdasdas dasdsa dasd asd as d", "Description 2", "Description 3"],
+        "image_background" => $image_background,
+        "placesToVisit" => $placesToVisit,
+        "cardDescriptions" => $cardDescriptions,
         "placesToEat" => ["Sospiro Restaurant", "Liburnia Restaurant", "Pinocchio", "SEN5ES"],
         "placesToSleep" => ["Swiss Diamond Hotel", "Derand Hotel", "Hotel Manami", "Emerald Hotel"]
-    ],
-    "Prizreni" => [
-        "name" => "Prizreni",
-        "description" => "Prizren is the capital and largest city of Kosovo with a population of more than 200,000 people...",
-        "image" => 'fotot/webRNS-KOSOVO2-09052017.jpg',
-        "image_background" => ['fotot/webRNS-KOSOVO2-09052017.jpg', 'fotot/pristina-kosovo-travel-photo-20230417173342682-main-image.jpg'],
-        "placesToVisit" => ["Place 1", "Place 2", "Place 3"],
-        "cardDescriptions" => ["Description 1 sadsasdasdas  sadsadasdasdas dasdsa dasd asd as d", "Description 2", "Description 3"],
-        "placesToEat" => ["Sospiro Restaurant", "Liburnia Restaurant", "Pinocchio", "SEN5ES"],
-        "placesToSleep" => ["Swiss Diamond Hotel", "Derand Hotel", "Hotel Manami", "Emerald Hotel"]
-    ],
-];
-
+    ];
+}
 $selectedCityName = isset($_GET['selectedCity']) ? $_GET['selectedCity'] : '';
 
 if (!empty($selectedCityName) && isset($citiesData[$selectedCityName])) {
