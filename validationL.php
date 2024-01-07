@@ -16,6 +16,7 @@ if(isset($_POST['login_btn'])){
 
             $_SESSION['authenticated'] = TRUE;
             $_SESSION['auth_user'] = [
+                'User_ID' => $row['User_ID'],
                 'username' => $row['name'],
                 'email' => $row['email']
             ];

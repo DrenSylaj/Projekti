@@ -100,6 +100,7 @@ include('navbar.php');
         }
     ?>
     <div class="user_dashboard">
+    <h1>ID: <?=$_SESSION['auth_user']['User_ID']?></h1>
     <h1>Username: <?= $_SESSION['auth_user']['username']?></h1>
     <h1>Email: <?= $_SESSION['auth_user']['email']?></h1>
     </div>

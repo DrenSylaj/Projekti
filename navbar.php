@@ -1,5 +1,6 @@
 <?php
 include('authentication.php');
+include('dbcon.php');
 ?>
 
 <link rel="stylesheet" href="index.css">
@@ -38,7 +39,24 @@ include('authentication.php');
                   </div>
                 </div> 
                 <li><a href="aboutus.html">ABOUT US</a></li>
-                <li><a href="dashboard.php">DASHBOARD</a></li>
+                <?php
+                  $authUser = $_SESSION['auth_user'];
+                  $loggedInUserId = $authUser['User_ID'];
+
+                  $query = "SELECT u.User_ID FROM users u, admins a WHERE u.User_ID = a.user_id";
+                  $result = mysqli_query($con, $query);
+
+                  $admins = [];
+                  while ($row = mysqli_fetch_assoc($result)) {
+                      $admins[] = $row['User_ID']; 
+                  }
+
+                  $userIsAdmin = in_array($loggedInUserId, $admins, true);
+
+                  if ($userIsAdmin) {
+                      echo '<li><a href="dashboard.php">DASHBOARD</a></li>';
+                  }
+                ?>
                 <?php if(!isset($_SESSION['authenticated'])) :?>
                 <li><a href="registration.php">LOG IN</a></li>
                 <?php endif ?>
