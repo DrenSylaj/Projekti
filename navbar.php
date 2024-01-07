@@ -8,6 +8,53 @@ include('dbcon.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png">
     <style src="index.js"></style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      const body = document.querySelector("body");
+    const nav = document.querySelector("nav");
+    const modeToggle = document.querySelector(".dark-light");
+    const searchToggle = document.querySelector(".searchToggle");
+    const sidebarOpen = document.querySelector(".sidebarOpen");
+
+    if (modeToggle) {
+        modeToggle.addEventListener("click", function() {
+            modeToggle.classList.toggle("active");
+            body.classList.toggle("dark");
+
+            if (!body.classList.contains("dark")) {
+                localStorage.setItem("mode", "light-mode");
+            } else {
+                localStorage.setItem("mode", "dark-mode");
+            }
+        });
+    }
+
+    if (searchToggle) {
+        searchToggle.addEventListener("click", function() {
+            searchToggle.classList.toggle("active");
+        });
+    }
+
+    if (sidebarOpen) {
+        sidebarOpen.addEventListener("click", function() {
+            nav.classList.add("active");
+        });
+    }
+
+    if (body) {
+        body.addEventListener("click", function(e) {
+            let clickedElm = e.target;
+            if (
+                !clickedElm.classList.contains("sidebarOpen") &&
+                !clickedElm.classList.contains("menu")
+            ) {
+                nav.classList.remove("active");
+            }
+        });
+    }
+});
+    </script>
 <nav>
     <div class="nav-bar">
         <i class='bx bx-menu sidebarOpen' ></i>
@@ -43,12 +90,12 @@ include('dbcon.php');
                   $authUser = $_SESSION['auth_user'];
                   $loggedInUserId = $authUser['User_ID'];
 
-                  $query = "SELECT u.User_ID FROM users u, admins a WHERE u.User_ID = a.user_id";
+                  $query = "SELECT user_id FROM admins";
                   $result = mysqli_query($con, $query);
 
                   $admins = [];
                   while ($row = mysqli_fetch_assoc($result)) {
-                      $admins[] = $row['User_ID']; 
+                      $admins[] = $row['user_id']; 
                   }
 
                   $userIsAdmin = in_array($loggedInUserId, $admins, true);

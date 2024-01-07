@@ -1,5 +1,6 @@
 <?php
 include('navbar.php');
+include('dbcon.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,8 +106,21 @@ include('navbar.php');
     <h1>Email: <?= $_SESSION['auth_user']['email']?></h1>
     </div>
     <form action="add_card.php" method="POST">
-        <label for="">City:</label>
-        <input type="number" min="1" max="7" name="city_id">
+    <label for="">City:</label>
+        <select name="cities" id="cities">
+        <?php
+        $query = "SELECT emriQytetit FROM cities";
+        $result = mysqli_query($con, $query);
+
+        $cities = [];
+        while($row = mysqli_fetch_assoc($result)){
+            $qyteti[] = $row['emriQytetit'];
+        }
+        foreach($qyteti as $cityName){
+            echo"<option value='$cityName' name='$cityName'>$cityName</option>";
+        }   
+        ?>    
+        </select>
         <label for="">Card Type:</label>
         <select name="type" id="type">
             <option value="visit" name="placesToVisit">Places to Visit</option>
