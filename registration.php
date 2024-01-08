@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="utf-8">
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -220,7 +221,8 @@ form
 <h1 class="logoK">KOSOVA</h1>
 </div>
 <div class="registration">
-  <div class="alert">
+    <section class="wrapper">
+    <div class="alert">
     <?php
       if(isset($_SESSION['status'])){
         $statusMessage = $_SESSION['status'];
@@ -229,9 +231,8 @@ form
         unset($_SESSION['status_type']);
         echo "<div class='$statusClass'>$statusMessage</div>";
       }
-    ?>
+    ?>  
   </div>
-    <section class="wrapper">
       <div class="form signup">
         <header>Signup</header>
         <form action="validation.php" method="POST">

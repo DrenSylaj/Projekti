@@ -14,13 +14,18 @@ include('dbcon.php');
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
         }
 
+        .page{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .container {
+            width: 500px;
+            margin-top: 120px;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -89,8 +94,8 @@ include('dbcon.php');
     </style>
 </head>
 <body>
-
-    <div class="container">
+    <div class="page">
+        <div class="container">
     <?php
         if(isset($_SESSION['statusD'])){
             $statusMessage = $_SESSION['statusD'];
@@ -139,6 +144,10 @@ include('dbcon.php');
         <br><button type="submit" name="submit_btn">Add Card</button>
     </form>
     </div>
+    </div>
 </body>
+<?php
+include('footer.php');
+?>
 </html>
 

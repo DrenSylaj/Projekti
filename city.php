@@ -7,19 +7,17 @@ class City {
     private $name;
     private $description;
     private $image;
-    private $image_background;
+    private $image1;
     private $placesToVisit;
-    private $cardDescriptions;
     private $placesToEat;
     private $placesToSleep;
 
-    public function __construct($name, $description, $image, $image_background, $placesToVisit, $cardDescriptions, $placesToEat, $placesToSleep) {
+    public function __construct($name, $description, $image, $image1, $placesToVisit, $placesToEat, $placesToSleep) {
         $this->name = $name;
         $this->description = $description;
         $this->image = $image;
-        $this->image_background = $image_background;
+        $this->image1 = $image1;
         $this->placesToVisit = $placesToVisit;
-        $this->cardDescriptions = $cardDescriptions;
         $this->placesToEat = $placesToEat;
         $this->placesToSleep = $placesToSleep;
     }
@@ -58,33 +56,44 @@ class City {
 
             <div class='image-container2'>
                 <img src='{$this->image1}' alt=''>
-            </div>
+            </div>";
 
+            $this->renderPlacesToVisit();
+            $this->renderPlacesToEat();
+            $this->renderPlacesToSleep();
+        
+        echo " 
+        </body>
+        </html>
+        ";
+    }
+
+    public function renderPlacesToVisit() {
+        echo "
             <h1 class='overlay-text2'>Places to Visit</h1>
             <p class='paragraph2'>Some of the most frequented and unique places to be in {$this->name}</p>
 
             <div class='card-containter'>";
 
-            foreach ($this->placesToVisit as $index => $place) {
-                $cardDescription = isset($this->cardDescriptions[$index]) ? $this->cardDescriptions[$index] : '';
-                $image_background = isset($this->image_background[$index]) ? $this->image_background[$index] : '';
-            
-                echo "
+        foreach ($this->placesToVisit as $place) {
+            echo "
                 <article class='card'>
-                    <img class='card__background' src='{$image_background}' width='1920' height='2193'/>
+                    <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
                     <div class='card__content | flow'>
                         <div class='card__content--container | flow'>
-                            <h2 class='card__title'>$place</h2>
-                            <p class='card__description'>$cardDescription</p>
+                            <h2 class='card__title'>{$place['title']}</h2>
+                            <p class='card__description'>{$place['cardDescription']}</p>
                         </div>
                         <button class='card__button'><a href='#'>Read more</a></button>
                     </div>
                 </article>";
-            }
-
+        }
         echo "
-            </div>
+        </div>";
+    }
 
+    public function renderPlacesToEat() {
+        echo "
             <h1 class='overlay-text2'>Places to Eat</h1>
             <p class='paragraph2'>Some of the tastiest food in {$this->name}</p>
 
@@ -92,83 +101,117 @@ class City {
 
         foreach ($this->placesToEat as $place) {
             echo "
-            <article class='card'>
-                <h2 class='card__title'>$place</h2>
-                <button class='card__button'>Read more</button>
-            </article>";
+                <article class='card'>
+                    <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
+                    <div class='card__content | flow'>
+                        <div class='card__content--container | flow'>
+                            <h2 class='card__title'>{$place['title']}</h2>
+                            <p class='card__description'>{$place['cardDescription']}</p>
+                        </div>
+                        <button class='card__button'><a href='#'>Read more</a></button>
+                    </div>
+                </article>";
         }
 
         echo "
-            </div>
+            </div>";
+    }
 
+    public function renderPlacesToSleep() {
+        echo "
             <h1 class='overlay-text2'>Places to Sleep</h1>
             <p class='paragraph2'>Some of the most comfortable places to sleep at night.</p>
+
             <div class='card-containter'>";
 
         foreach ($this->placesToSleep as $place) {
             echo "
-            <article class='card'>
-                <h2 class='card__title'>$place</h2>
-                <button class='card__button'><a href='#'>Reservation</a></button>
-            </article>";
+                <article class='card'>
+                    <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
+                    <div class='card__content | flow'>
+                        <div class='card__content--container | flow'>
+                            <h2 class='card__title'>{$place['title']}</h2>
+                            <p class='card__description'>{$place['cardDescription']}</p>
+                        </div>
+                        <button class='card__button'><a href='#'>Reservation</a></button>
+                    </div>
+                </article>";
         }
 
         echo "
-            </div>
-
-        </body>
-        </html>
-        ";
+            </div>";
     }
 }
-$query = "SELECT * FROM visit";
-$result = mysqli_query($con, $query);
-$placesToVisit = [];
-$cardDescriptions = [];
-$image_background = [];
-while($row = mysqli_fetch_assoc($result)){
-    $placesToVisit[] = $row['title'];
-    $cardDescriptions[] = $row['description'];
-    $image_background[] = $row['image_url'];
-}
 
-$query_2 = "SELECT emriQytetit FROM cities";
-$result_2 = mysqli_query($con, $query_2); 
-$qyteti = [];
-while ($row_2 = mysqli_fetch_assoc($result_2)) {
-    $qyteti[] = $row_2['emriQytetit']; 
-}
-
-$citiesData = [];
-
-foreach($qyteti as $cityName){ 
-    $citiesData[$cityName] = [
-        "name" => $cityName,
-        "description" => "Pristina is the capital and largest city of Kosovo with a population of more than 200,000 people...",
-        "image" => 'fotot/pristina-kosovo-travel-photo-20230417173342682-main-image.jpg',
-        "image_background" => $image_background,
-        "placesToVisit" => $placesToVisit,
-        "cardDescriptions" => $cardDescriptions,
-        "placesToEat" => ["Sospiro Restaurant", "Liburnia Restaurant", "Pinocchio", "SEN5ES"],
-        "placesToSleep" => ["Swiss Diamond Hotel", "Derand Hotel", "Hotel Manami", "Emerald Hotel"]
-    ];
-}
 $selectedCityName = isset($_GET['selectedCity']) ? $_GET['selectedCity'] : '';
 
-if (!empty($selectedCityName) && isset($citiesData[$selectedCityName])) {
-    $cityData = $citiesData[$selectedCityName];
-    $city = new City(
-        $cityData["name"],
-        $cityData["description"],
-        $cityData["image"],
-        $cityData["image_background"],
-        $cityData["placesToVisit"],
-        $cityData["cardDescriptions"],
-        $cityData["placesToEat"],
-        $cityData["placesToSleep"]
-    );
+if (!empty($selectedCityName)) {
+    $query_city = "SELECT * from cities WHERE emriQytetit = '$selectedCityName'";
+    $result_city_query = mysqli_query($con, $query_city);
 
-    $city->renderHTML();
+    if($rowCity = mysqli_fetch_assoc($result_city_query)){
+        $selectedCityId = $rowCity['city_id'];
+        $cityName = $rowCity['emriQytetit'];
+        $cityDescription = $rowCity['description'];
+        $cityLogo = $rowCity['image_url'];
+        $city_background = $rowCity['image_background'];
+
+        $queryVisit = "SELECT * FROM visit WHERE city_id = $selectedCityId";
+        $resultVisit = mysqli_query($con, $queryVisit);
+        $placesToVisit = [];
+
+        while($rowVisit = mysqli_fetch_assoc($resultVisit)){
+            $placesToVisit[] = [
+                'title' => $rowVisit['title'],
+                'cardDescription' => $rowVisit['description'],
+                'image_background' => $rowVisit['image_url']
+            ];
+        }
+
+        $queryEat = "SELECT * FROM eat WHERE city_id = '$selectedCityId'";
+        $resultEat = mysqli_query($con, $queryEat);
+        $placesToEat = [];
+        while($rowEat = mysqli_fetch_assoc($resultEat)){
+            $placesToEat[] = [
+                'title' => $rowEat['title'],
+                'cardDescription' => $rowEat['description'],
+                'image_background' => $rowEat['image_url'] 
+            ];
+        }
+
+        $querySleep = "SELECT * FROM sleep WHERE city_id = '$selectedCityId'";
+        $resultSleep = mysqli_query($con, $querySleep);
+        $placesToSleep = [];
+        while($rowSleep = mysqli_fetch_assoc($resultSleep)){
+            $placesToSleep[] = [
+                'title' => $rowSleep['title'],
+                'cardDescription' => $rowSleep['description'],
+                'image_background' => $rowSleep['image_url']
+            ];
+        }
+
+        $cityData = [
+            "name" => $cityName,
+            "description" => $cityDescription,
+            "image" => $city_background,
+            "image1" => $cityLogo,
+            "placesToVisit" => $placesToVisit,
+            "placesToEat" => $placesToEat,
+            "placesToSleep" => $placesToSleep
+        ];
+
+        $city = new City(
+            $cityData["name"],
+            $cityData["description"],
+            $cityData["image"],
+            $cityData["image1"],
+            $cityData["placesToVisit"],
+            $cityData["placesToEat"],
+            $cityData["placesToSleep"]
+        );
+
+        $city->renderHTML();
+    }
 }
 
 include('footer.php');

@@ -85,7 +85,7 @@ include('dbcon.php');
                     <a href="city.php?selectedCity=Gjilani">Gjilani</a>
                   </div>
                 </div> 
-                <li><a href="aboutus.html">ABOUT US</a></li>
+                <li><a href="aboutus.php">ABOUT US</a></li>
                 <?php
                   $authUser = $_SESSION['auth_user'];
                   $loggedInUserId = $authUser['User_ID'];

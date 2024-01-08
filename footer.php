@@ -20,7 +20,7 @@
       </div>
       
       <div class="row">
-      DS BM Copyright © 2023 - All rights reserved || Designed By: Dren Sylaj
+      DS Copyright © 2023 - All rights reserved || Designed By: Dren Sylaj
       </div>
       </div>
 </footer>
