@@ -21,7 +21,7 @@ class City {
         $this->placesToEat = $placesToEat;
         $this->placesToSleep = $placesToSleep;
     }
-
+    
     public function renderHTML() {
         echo "
         <!DOCTYPE html>
@@ -30,13 +30,14 @@ class City {
             <meta charset='UTF-8'>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             <link rel='stylesheet' href='index.css'>
+            <link rel='stylesheet' href='test.css'>
+            <script src='test.js'></script>
             <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
             <link rel='icon' type='image/x-icon' href='/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png'>
             <title>KosovoCityTour ꞏ {$this->name}</title>
         </head>
         <body>
-
             <div class='image-background'>
                 <img src='{$this->image}' alt='' id='bc-photo'>
             </div>
@@ -48,14 +49,16 @@ class City {
             <div class='ripped-paper'>
                 <img src='fotot/ripped-paper.png' alt='' class='paper2'>
             </div>
-
-            <div class='text-container2'>
-                <h1 class='overlay-text2'>{$this->name}</h1>
-                <p>{$this->description}</p>
-            </div>
-
-            <div class='image-container2'>
-                <img src='{$this->image1}' alt=''>
+            <div class='city-container'>
+                <div class='logo-text-container'>
+                    <div class='image-container2'>
+                        <img src='{$this->image1}' alt=''>
+                    </div>
+                    <div class='text-container2'>
+                        <h1 class='overlay-text2'>{$this->name}</h1>
+                        <p>{$this->description}</p>
+                    </div>
+                </div>
             </div>";
 
             $this->renderPlacesToVisit();
@@ -78,6 +81,7 @@ class City {
         foreach ($this->placesToVisit as $place) {
             echo "
                 <article class='card'>
+                <i class='fa fa-heart heart-icon' style='font-size: 30px;'></i>
                     <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
                     <div class='card__content | flow'>
                         <div class='card__content--container | flow'>
@@ -102,6 +106,7 @@ class City {
         foreach ($this->placesToEat as $place) {
             echo "
                 <article class='card'>
+                <i class='fa fa-heart heart-icon' style='font-size: 30px;'></i>
                     <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
                     <div class='card__content | flow'>
                         <div class='card__content--container | flow'>
@@ -127,6 +132,7 @@ class City {
         foreach ($this->placesToSleep as $place) {
             echo "
                 <article class='card'>
+                    <i class='fa fa-heart heart-icon' style='font-size: 30px;'></i>
                     <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
                     <div class='card__content | flow'>
                         <div class='card__content--container | flow'>

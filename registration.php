@@ -36,7 +36,8 @@ body {
   width: 50px;
 }
 
-.logoK{
+.logoK a{
+  text-decoration: none;
   margin-left: 15px;
   color: #D0A650;
 }
@@ -218,7 +219,15 @@ form
 <body>
 <div class="logo2">
 <img src="fotot/kosovologo2.png" alt="">
-<h1 class="logoK">KOSOVA</h1>
+<?php
+if(!isset($_SESSION['authenticated'])){
+  echo"<h1 class='logoK'><a href='registration.php'>KOSOVA</a></h1>";
+}
+else{
+  echo"<h1 class='logoK'><a href='index.php'>KOSOVA</a></h1>";
+}
+?>
+
 </div>
 <div class="registration">
     <section class="wrapper">

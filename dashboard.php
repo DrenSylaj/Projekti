@@ -7,93 +7,22 @@ include('dbcon.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="test.css">
     <title>Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
-
-        .page{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            width: 500px;
-            margin-top: 120px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h4 {
-            text-align: center;
-            color: #333;
-            font-family: Arial;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        label {
-            margin-top: 10px;
-        }
-
-        input, select, textarea, button {
-            margin-top: 5px;
-            padding: 8px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .status {
-        padding: 20px;
-        text-align: center;
-        margin-top: 10px;
-        border-radius: 5px;
-        font-weight: bold;
-        }
-
-        .success {
-            padding: 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .error {
-            padding: 20px;
-            background-color: #f44336;
-            color: white;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 <body>
+    <div class="forms">
+    <div class="page">
+    <div class="container">
+    <div class="user_dashboard">
+    <h1>ID: <span class="displayed"><?=$_SESSION['auth_user']['User_ID']?><span></h1>
+    <h1>Name: <span class="displayed"><?= $_SESSION['auth_user']['name']?></span></h1>
+    <h1>Surname: <span class="displayed"><?= $_SESSION['auth_user']['surname']?></span></h1>
+    <h1>Email: <span class="displayed"><?= $_SESSION['auth_user']['email']?></span></h1>
+    </div>
+    </div>
+    </div>
+
     <div class="page">
         <div class="container">
     <?php
@@ -105,11 +34,6 @@ include('dbcon.php');
             echo "<div class='$statusClass'>$statusMessage</div>";
         }
     ?>
-    <div class="user_dashboard">
-    <h1>ID: <?=$_SESSION['auth_user']['User_ID']?></h1>
-    <h1>Username: <?= $_SESSION['auth_user']['username']?></h1>
-    <h1>Email: <?= $_SESSION['auth_user']['email']?></h1>
-    </div>
     <form action="add_card.php" method="POST">
     <label for="">City:</label>
         <select name="cities" id="cities">
@@ -117,7 +41,7 @@ include('dbcon.php');
         $query = "SELECT emriQytetit FROM cities";
         $result = mysqli_query($con, $query);
 
-        $cities = [];
+        $qyteti = [];
         while($row = mysqli_fetch_assoc($result)){
             $qyteti[] = $row['emriQytetit'];
         }
@@ -145,6 +69,106 @@ include('dbcon.php');
     </form>
     </div>
     </div>
+    </div>
+<?php    
+class TableDisplay
+{
+    private $con;
+
+    public function __construct($con)
+    {
+        $this->con = $con;
+    }
+
+    public function generateDeleteLink($tableName, $primaryKeyValue)
+        {
+            return "delete.php?table=$tableName&delete=$primaryKeyValue";
+        }    
+        
+    public function generateEditLink($tableName, $primaryKeyValue)
+        {
+            return "edit.php?table=$tableName&edit=$primaryKeyValue";
+        }
+
+    public function displayTable($tableName, $columns, $primaryKey)
+    {
+        echo "
+        <div class='containerCards'>
+            <section class='displayCards'>
+                <table>
+                    <thead>
+
+                    <th>Card Number</th>
+                    <th>Card Image</th>
+                    <th>Card Name</th>
+                    <th>City</th>
+                    <th>User ID</th>
+                    <th>Action</th>
+                    </thead>
+                    <tbody>";
+
+        $query = "SELECT * FROM $tableName";
+        $query_run = mysqli_query($this->con, $query);
+
+        if ($query_run) {
+            while ($row = mysqli_fetch_assoc($query_run)) {
+                echo "<tr>";
+
+                foreach ($columns as $column) {
+                    $value = $row[$column];
+
+                    if ($column === 'city_id') {
+                        $cityName = $this->getCityName($value);
+                        echo "<td>$cityName</td>";
+                    } elseif ($column === 'image_url') {
+                        echo "<td><img src='$value' alt='Card Image' style='width: 50px;'></td>";
+                    } else {
+                        echo "<td>$value</td>";
+                    }
+                }
+
+                echo "
+                    <td>
+                    <a href='{$this->generateDeleteLink($tableName, $row[$primaryKey])}' class='delete_card' onclick='return confirm(\"Are you sure you want to delete this card?\");'><i class='fas fa-trash'></i></a>
+                        <a href='{$this->generateEditLink($tableName, $row[$primaryKey])}' class='edit_card'><i class='fas fa-edit'></i></a>
+                    </td>
+                </tr>";
+            }
+        }
+
+        echo "
+            </tbody>
+        </table>
+        </section>
+        </div>";
+    }
+
+    private function getCityName($cityId)
+    {
+        $query = "SELECT emriQytetit FROM cities WHERE city_id = $cityId";
+        $result = mysqli_query($this->con, $query);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['emriQytetit'];
+        }
+
+        return ''; 
+    }
+}
+
+$tableDisplay = new TableDisplay($con);
+
+$visitColumns = ['landmark_id', 'image_url', 'title', 'city_id', 'user_id'];
+$tableDisplay->displayTable('visit', $visitColumns, 'landmark_id');
+
+$sleepColumns = ['hotel_id', 'image_url', 'title', 'city_id', 'user_id'];
+$tableDisplay->displayTable('sleep', $sleepColumns, 'hotel_id');
+
+$eatColumns = ['restaurant_id', 'image_url', 'title', 'city_id', 'user_id'];
+$tableDisplay->displayTable('eat', $eatColumns, 'restaurant_id');
+
+?>
 </body>
 <?php
 include('footer.php');

@@ -1,0 +1,163 @@
+.fa-heart{
+    z-index: 99;
+    color: white;
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+.fa-heart:hover{
+    color: red;
+}
+
+  .fa-heart.filled {
+    color: red; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 500px;
+    margin-top: 120px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forms{
+    display: flex;
+    justify-content: space-around;
+    padding-right: 550px;
+    max-width: 100%;
+}
+
+h1, h4 {
+    text-align: center;
+    color: #333;
+    font-family: Arial;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+form img{
+    margin-bottom: 15px;
+    height: auto;
+    max-width: 80%;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input, select, textarea, button {
+    margin-top: 5px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.status {
+padding: 20px;
+text-align: center;
+margin-top: 10px;
+border-radius: 5px;
+font-weight: bold;
+}
+
+.success {
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.error {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.displayed{
+    font-size: 23px;
+    font-family: Arial;
+}
+
+.containerCards {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+}
+
+.displayCards {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+td a {
+    color: #3498db;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+td a:hover {
+    color: #e74c3c;
+}
+
+.fas {
+    font-size: 18px;
+}

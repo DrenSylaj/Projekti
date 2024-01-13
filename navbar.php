@@ -76,13 +76,17 @@ include('dbcon.php');
                     <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">
-                    <a href="city.php?selectedCity=Prishtina">Prishtina</a>
-                    <a href="city.php?selectedCity=Prizreni">Prizreni</a>
-                    <a href="city.php?selectedCity=Peja">Peja</a>
-                    <a href="city.php?selectedCity=Gjakova">Gjakova</a>
-                    <a href="city.php?selectedCity=Ferizaji">Ferizaji</a>
-                    <a href="city.php?selectedCity=Mitrovica">Mitrovica</a>
-                    <a href="city.php?selectedCity=Gjilani">Gjilani</a>
+                    <?php
+                    $query_city = "SELECT emriQytetit FROM cities";
+                    $query_city_run = mysqli_query($con, $query_city);
+                    $qyteti = [];
+                    while($row = mysqli_fetch_assoc($query_city_run)){
+                        $qyteti[] = $row['emriQytetit'];
+                    }
+                    foreach($qyteti as $cityName){
+                        echo"<a href='city.php?selectedCity=$cityName'>$cityName</a>";
+                    }  
+                    ?>
                   </div>
                 </div> 
                 <li><a href="aboutus.php">ABOUT US</a></li>

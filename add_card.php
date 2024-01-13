@@ -12,6 +12,8 @@ if (isset($_POST['submit_btn'])) {
     $get_city_id_query = "SELECT city_id FROM cities WHERE emriQytetit = '$city_name' LIMIT 1";
     $get_city_id_query_run = mysqli_query($con, $get_city_id_query);
 
+    $user_id = $_SESSION['auth_user']['User_ID'];
+
     if ($get_city_id_query_run && mysqli_num_rows($get_city_id_query_run) > 0) {
         $row = mysqli_fetch_assoc($get_city_id_query_run);
         $city_id = $row['city_id'];
@@ -25,7 +27,7 @@ if (isset($_POST['submit_btn'])) {
             header("Location:dashboard.php");
             exit(0);
         } else {
-            $query = "INSERT INTO $type (title, description, image_url, city_id) VALUES ('$title', '$description', '$image', '$city_id')";
+            $query = "INSERT INTO $type (title, description, image_url, city_id, user_id) VALUES ('$title', '$description', '$image', '$city_id', $user_id)";
             $query_run = mysqli_query($con, $query);
 
             if ($query_run) {

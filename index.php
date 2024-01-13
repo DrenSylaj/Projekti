@@ -61,25 +61,24 @@ include('navbar.php');
 
       <div id="slider-container">
         <div id="slider">
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Gjakova-Kosovo-Cabrati-Hill.jpg" alt="Image 1"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Prizren-11.jpg" alt="Image 2"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Granica-Monastery-Kosovo.jpg" alt="Image 3"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Prishtina-Kosovo-30.jpg" alt="Image 4"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/e228bf3be784ffff7a338ec8d9167d30-pristina.jpg" alt="Image 5"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Kosovo-UNESCO-Monuments-Decani.jpg" alt="Image 6"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Kosovo-travel-itinerary-Peja-city.jpg" alt="Image 7"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Kosovo-travel-itinerary-Peja-spring-park.jpg" alt="Image 8"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Prizren-Kosovo-river-bridge-hero.jpg" alt="Image 9"></div>
+          <?php
+          $query = "SELECT * FROM main_fotot";
+          $query_run = mysqli_query($con, $query);
+          $fotot = [];
+          $alt = [];
+          while($row = mysqli_fetch_assoc($query_run)){
+            $fotot [] = $row['image_url'];
+            $alt [] = $row['alt'];
+          }
 
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Gjakova-Kosovo-Cabrati-Hill.jpg" alt="Image 1"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Prizren-11.jpg" alt="Image 2"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Granica-Monastery-Kosovo.jpg" alt="Image 3"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Prishtina-Kosovo-30.jpg" alt="Image 4"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/e228bf3be784ffff7a338ec8d9167d30-pristina.jpg" alt="Image 5"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Kosovo-UNESCO-Monuments-Decani.jpg" alt="Image 6"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Kosovo-travel-itinerary-Peja-city.jpg" alt="Image 7"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Kosovo-travel-itinerary-Peja-spring-park.jpg" alt="Image 8"></div>
-            <div class="slide"><img src="fotot/foto(Komunat)/Emily-Lush-Prizren-Kosovo-river-bridge-hero.jpg" alt="Image 9"></div>
+          foreach($fotot as $key => $imageBG){
+            echo"<div class='slide'><img src='$imageBG' alt='{$alt[$key]}'></div>";
+          }
+
+          foreach($fotot as $key => $imageBG){
+            echo"<div class='slide'><img src='$imageBG' alt='{$alt[$key]}'></div>";
+          }
+          ?>
         </div>
       </div>
       
@@ -160,13 +159,9 @@ include('navbar.php');
       </li>
       
     </ul>
-  
 
-    <h1 class="overlay-text2">Explore</h1>
+    <h1 class="overlay-text2" id="harta">Explore</h1>
       <p class="paragraph2">Head into one of the regions of Kosovo</p>
-      <div class="mapdiv"  id="harta">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
 <?php
 include('map.php');
 ?>
@@ -184,7 +179,7 @@ include('map.php');
       </article>
       
       <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" alt="Mitrovica" class="table__picture">
+        <img src="https://cdn.dribbble.com/users/11670474/screenshots/19601988/media/f8a90205e0b4385bc0b5dc5a09b02bf1.jpg?resize=400x300&vertical=center" alt="Mitrovica" class="table__picture">
         <span class="table__name"><a href="Mitrovica.html">Mitrovica</a></span>
         <span class="table__value">02</span>
       </article>

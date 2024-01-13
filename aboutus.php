@@ -16,31 +16,29 @@ include('navbar.php');
     <title>AboutUs</title>
 </head>
 <body>
-
-    <div class="image-background">
-        <img src="fotot/43e811ac7a26a6f60e5ca3c14c3f0f96.png" alt="">
-        <img src="fotot/" alt="">
+<?php
+$query = "SELECT * FROM aboutus";
+$query_run = mysqli_query($con, $query);
+$row = mysqli_fetch_assoc($query_run);
+$description = $row['description'];
+$image_background = $row['image_background'];
+echo"
+    <div class='image-background'>
+        <img src='$image_background' alt=''>
+        <img src='fotot/' alt=''>
     </div>
 
-    <div class="ripped-paper">
-        <img src="fotot/ripped-paper.png" alt="" class="paper2">
-        <h1 class="overlay-text">About Us</h1>
-    </div>
+    <div class='ripped-paper'>
+        <img src='fotot/ripped-paper.png' alt='' class='paper2'>
+        <h1 class='overlay-text'>About Us</h1>
+    </div>  
 
-    <div class="text-container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div class='text-container'>
+        <p>$description
         </p>
     </div>
-
+    ";
+    ?>
 <?php
 include('footer.php');
 ?>

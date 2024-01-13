@@ -1,39 +1,62 @@
 <?php
+
+class LoginValidation {
+    private $con;
+
+    public function __construct($con) {
+        $this->con = $con;
+    }
+
+    public function loginUser($email, $password) {
+        if (!empty(trim($email)) && !empty(trim($password))) {
+            $email = mysqli_real_escape_string($this->con, $email);
+            $password = mysqli_real_escape_string($this->con, $password);
+
+            $loginQuery = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+            $loginQueryRun = mysqli_query($this->con, $loginQuery);
+
+            if (mysqli_num_rows($loginQueryRun) > 0) {
+                $row = mysqli_fetch_array($loginQueryRun);
+
+                $_SESSION['authenticated'] = true;
+                $_SESSION['auth_user'] = [
+                    'User_ID' => $row['User_ID'],
+                    'name' => $row['name'],
+                    'surname' => $row['surname'],
+                    'email' => $row['email']
+                ];
+                $_SESSION['status'] = "You're logged in successfully";
+                $this->redirect("index.php");
+            } else {
+                $this->setSessionMessage("Invalid Email or Password");
+                $this->redirect("registration.php");
+            }
+        } else {
+            $this->setSessionMessage("All fields are mandatory");
+            $this->redirect("registration.php");
+        }
+    }
+
+    private function setSessionMessage($message) {
+        $_SESSION['status'] = $message;
+    }
+
+    private function redirect($location) {
+        header("Location: $location");
+        exit(0);
+    }
+}
+
+
 session_start();
 include('dbcon.php');
 
-if(isset($_POST['login_btn'])){
+if (isset($_POST['login_btn'])) {
+    $loginManager = new LoginValidation($con);
 
-    if(!empty(trim($_POST['email'])) && !empty(trim($_POST['password']))){
-        $email = mysqli_real_escape_string($con, $_POST['email']);
-        $password = mysqli_real_escape_string($con, $_POST['password']);
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-        $login_query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-        $login_query_run = mysqli_query($con, $login_query);
-
-        if(mysqli_num_rows($login_query_run) > 0){
-            $row = mysqli_fetch_array($login_query_run);
-
-            $_SESSION['authenticated'] = TRUE;
-            $_SESSION['auth_user'] = [
-                'User_ID' => $row['User_ID'],
-                'username' => $row['name'],
-                'email' => $row['email']
-            ];
-            $_SESSION['status'] = "You're logged in succesfully";
-            header("Location:index.php");
-            exit(0);
-        }
-        else{
-            $_SESSION['status'] = "Invalid Email or Password";
-            header("Location:registration.php");
-            exit(0);
-        }
-    }
-    else{
-        $_SESSION['status'] = "All fields are mandatory";
-        header("Location:registration.php");
-        exit(0);
-    }
+    $loginManager->loginUser($email, $password);
 }
 ?>
