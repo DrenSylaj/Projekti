@@ -83,7 +83,7 @@ if (isset($_POST['update_btn'])) {
                 <textarea name='description_update'><?php echo $description; ?></textarea>
 
                 <label for='image'>Insert an Image:</label>
-                <input type='text' name='image_update' required>
+                <input type='text' name='image_update' value='<?php echo $image_url; ?>' required>
 
                 <br>
                 <div class='btns'>

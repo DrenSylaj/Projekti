@@ -1526,7 +1526,10 @@ label {
     margin-left: 3px;
   }
 
-  
+.icons{
+  display: flex;
+  justify-content: space-between;
+}
 
 
   

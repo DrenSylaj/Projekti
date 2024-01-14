@@ -8,6 +8,9 @@ include('dbcon.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="test.css">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/trash.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/edit-flip-v.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -129,8 +132,10 @@ class TableDisplay
 
                 echo "
                     <td>
-                    <a href='{$this->generateDeleteLink($tableName, $row[$primaryKey])}' class='delete_card' onclick='return confirm(\"Are you sure you want to delete this card?\");'><i class='fas fa-trash'></i></a>
-                        <a href='{$this->generateEditLink($tableName, $row[$primaryKey])}' class='edit_card'><i class='fas fa-edit'></i></a>
+                    <div class='icons'>
+                    <a href='{$this->generateDeleteLink($tableName, $row[$primaryKey])}' class='delete_card' onclick='return confirm(\"Are you sure you want to delete this card?\");'><i class='gg-trash'></i></a>
+                    <a href='{$this->generateEditLink($tableName, $row[$primaryKey])}' class='edit_card'><i class='gg-edit-flip-v'></i></a>
+                  </div>
                     </td>
                 </tr>";
             }

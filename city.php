@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('navbar.php');
 include('dbcon.php');
 
@@ -12,7 +12,8 @@ class City {
     private $placesToEat;
     private $placesToSleep;
 
-    public function __construct($name, $description, $image, $image1, $placesToVisit, $placesToEat, $placesToSleep) {
+    public function __construct($con, $name, $description, $image, $image1, $placesToVisit, $placesToEat, $placesToSleep) {
+        $this->con = $con;
         $this->name = $name;
         $this->description = $description;
         $this->image = $image;
@@ -20,6 +21,11 @@ class City {
         $this->placesToVisit = $placesToVisit;
         $this->placesToEat = $placesToEat;
         $this->placesToSleep = $placesToSleep;
+    }
+
+    public function addToFavorites($title, $city_id, $image_url) {
+        $queryFavorite = "INSERT INTO user_favorites (title, city_id, image_url, user_id) VALUES ('$title', '$city_id', '$image_url', '{$_SESSION['auth_user']['User_ID']}')";
+        $queryFavorite_run = mysqli_query($this->con, $queryFavorite);
     }
     
     public function renderHTML() {
@@ -81,14 +87,18 @@ class City {
         foreach ($this->placesToVisit as $place) {
             echo "
                 <article class='card'>
-                <i class='fa fa-heart heart-icon' style='font-size: 30px;'></i>
                     <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
                     <div class='card__content | flow'>
                         <div class='card__content--container | flow'>
                             <h2 class='card__title'>{$place['title']}</h2>
                             <p class='card__description'>{$place['cardDescription']}</p>
                         </div>
-                        <button class='card__button'><a href='#'>Read more</a></button>
+                        <form method='POST'>
+                        <input type='hidden' name='title' value='{$place['title']}'>
+                        <input type='hidden' name='city_id' value='{$place['city_id']}'>
+                        <input type='hidden' name='image_url' value='{$place['image_background']}'>
+                        <input type='submit' class='card__button' value='Add to favorites' name='add_to_favorite'>
+                    </form>
                     </div>
                 </article>";
         }
@@ -113,7 +123,12 @@ class City {
                             <h2 class='card__title'>{$place['title']}</h2>
                             <p class='card__description'>{$place['cardDescription']}</p>
                         </div>
-                        <button class='card__button'><a href='#'>Read more</a></button>
+                        <form method='POST'>
+                        <input type='hidden' name='title' value='{$place['title']}'>
+                        <input type='hidden' name='city_id' value='{$place['city_id']}'>
+                        <input type='hidden' name='image_url' value='{$place['image_background']}'>
+                        <input type='submit' class='card__button' value='Add to favorites' name='add_to_favorite'>
+                        <form>
                     </div>
                 </article>";
         }
@@ -132,14 +147,18 @@ class City {
         foreach ($this->placesToSleep as $place) {
             echo "
                 <article class='card'>
-                    <i class='fa fa-heart heart-icon' style='font-size: 30px;'></i>
                     <img class='card__background' src='{$place['image_background']}' width='1920' height='2193'/>
                     <div class='card__content | flow'>
                         <div class='card__content--container | flow'>
                             <h2 class='card__title'>{$place['title']}</h2>
                             <p class='card__description'>{$place['cardDescription']}</p>
                         </div>
-                        <button class='card__button'><a href='#'>Reservation</a></button>
+                        <form method='POST'>
+                        <input type='hidden' name='title' value='{$place['title']}'>
+                        <input type='hidden' name='city_id' value='{$place['city_id']}'>
+                        <input type='hidden' name='image_url' value='{$place['image_background']}'>
+                        <input type='submit' class='card__button' value='Add to favorites' name='add_to_favorite'>
+                        <form>
                     </div>
                 </article>";
         }
@@ -170,7 +189,8 @@ if (!empty($selectedCityName)) {
             $placesToVisit[] = [
                 'title' => $rowVisit['title'],
                 'cardDescription' => $rowVisit['description'],
-                'image_background' => $rowVisit['image_url']
+                'image_background' => $rowVisit['image_url'],
+                'city_id' => $rowVisit['city_id']
             ];
         }
 
@@ -181,7 +201,8 @@ if (!empty($selectedCityName)) {
             $placesToEat[] = [
                 'title' => $rowEat['title'],
                 'cardDescription' => $rowEat['description'],
-                'image_background' => $rowEat['image_url'] 
+                'image_background' => $rowEat['image_url'] ,
+                'city_id' => $rowEat['city_id']
             ];
         }
 
@@ -192,7 +213,8 @@ if (!empty($selectedCityName)) {
             $placesToSleep[] = [
                 'title' => $rowSleep['title'],
                 'cardDescription' => $rowSleep['description'],
-                'image_background' => $rowSleep['image_url']
+                'image_background' => $rowSleep['image_url'],
+                'city_id' => $rowSleep['city_id']
             ];
         }
 
@@ -207,6 +229,7 @@ if (!empty($selectedCityName)) {
         ];
 
         $city = new City(
+            $con,
             $cityData["name"],
             $cityData["description"],
             $cityData["image"],
@@ -215,6 +238,13 @@ if (!empty($selectedCityName)) {
             $cityData["placesToEat"],
             $cityData["placesToSleep"]
         );
+        
+        if (isset($_POST['add_to_favorite'])) {
+            $title = $_POST['title'];
+            $city_id = $_POST['city_id'];
+            $image_url = $_POST['image_url'];
+            $city->addToFavorites($title, $city_id, $image_url);
+        }
 
         $city->renderHTML();
     }
