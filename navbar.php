@@ -1,60 +1,13 @@
 <?php
-include('authentication.php');
 include('dbcon.php');
+include('authentication.php');
 ?>
 
 <link rel="stylesheet" href="index.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png">
-    <style src="index.js"></style>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-      const body = document.querySelector("body");
-    const nav = document.querySelector("nav");
-    const modeToggle = document.querySelector(".dark-light");
-    const searchToggle = document.querySelector(".searchToggle");
-    const sidebarOpen = document.querySelector(".sidebarOpen");
-
-    if (modeToggle) {
-        modeToggle.addEventListener("click", function() {
-            modeToggle.classList.toggle("active");
-            body.classList.toggle("dark");
-
-            if (!body.classList.contains("dark")) {
-                localStorage.setItem("mode", "light-mode");
-            } else {
-                localStorage.setItem("mode", "dark-mode");
-            }
-        });
-    }
-
-    if (searchToggle) {
-        searchToggle.addEventListener("click", function() {
-            searchToggle.classList.toggle("active");
-        });
-    }
-
-    if (sidebarOpen) {
-        sidebarOpen.addEventListener("click", function() {
-            nav.classList.add("active");
-        });
-    }
-
-    if (body) {
-        body.addEventListener("click", function(e) {
-            let clickedElm = e.target;
-            if (
-                !clickedElm.classList.contains("sidebarOpen") &&
-                !clickedElm.classList.contains("menu")
-            ) {
-                nav.classList.remove("active");
-            }
-        });
-    }
-});
-    </script>
+    <script src="index.js"></script>
 <nav>
     <div class="nav-bar">
         <i class='bx bx-menu sidebarOpen' ></i>
@@ -124,12 +77,7 @@ include('dbcon.php');
             </div>
             <div class="searchBox">
                <div class="searchToggle">
-                <i class='bx bx-x cancel'></i>
-                <i class='bx bx-search search'></i>
-               </div>
-                <div class="search-field">
-                    <input type="text" placeholder="Search...">
-                    <i class='bx bx-search'></i>
+                <a href="favorite.php"><i class='bx bxs-user' ></i></a>
                 </div>
             </div>
         </div>

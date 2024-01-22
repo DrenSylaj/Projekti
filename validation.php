@@ -3,7 +3,7 @@
 class SignUpValidation {
     private $con;
 
-    public function __construct($con, $name, $surname, $email, $password) {
+    public function __construct($con) {
         $this->con = $con;
     }
 

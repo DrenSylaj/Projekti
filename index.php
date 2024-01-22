@@ -11,7 +11,6 @@ include('navbar.php');
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png">
-    <script src="index.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>KosovoCityTour</title>
   </head>
@@ -165,58 +164,6 @@ include('navbar.php');
 <?php
 include('map.php');
 ?>
-  <div class="table-container">
-  <article class="table">
-    <header>
-      <h1 class="table__title"><span class="table__title--top">Kosova</span><span class="table__title--bottom">Cities</span></h1>
-    </header>
-    
-    <main class="table__profiles">
-      <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" class="table__picture" alt="Prishtina">
-        <span class="table__name"><a href="Prishtina.html">Prishtina</a></span>
-        <span class="table__value">01</span>
-      </article>
-      
-      <article class="table__profile">
-        <img src="https://cdn.dribbble.com/users/11670474/screenshots/19601988/media/f8a90205e0b4385bc0b5dc5a09b02bf1.jpg?resize=400x300&vertical=center" alt="Mitrovica" class="table__picture">
-        <span class="table__name"><a href="Mitrovica.html">Mitrovica</a></span>
-        <span class="table__value">02</span>
-      </article>
-      
-      <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" alt="Peja" class="table__picture">
-        <span class="table__name"><a href="Peja.html">Peja</a></span>
-        <span class="table__value">03</span>
-      </article>
-      
-      <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" alt="Prizren" class="table__picture">
-        <span class="table__name"><a href="Prizren.html">Prizren</a></span>
-        <span class="table__value">04</span>
-      </article>
-      
-      <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" class="table__picture" alt="Ferizaj">
-        <span class="table__name"><a href="Ferizaj.html">Ferizaj</a></span>
-        <span class="table__value">05</span>
-      </article>
-      
-      <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" class="table__picture" alt="Gjilan">
-        <span class="table__name"><a href="Gjilan.html">Gjilan</a></span>
-        <span class="table__value">06</span>
-      </article>
-      
-      <article class="table__profile">
-        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0019/6385/brand.gif?itok=MAFZ05ZS" class="table__picture" alt="Gjakova">
-        <span class="table__name"><a href="Gjakova.html">Gjakova</a></span>
-        <span class="table__value">07</span>
-      </article>
-    </main>
-  </article>
-  </div>
-</div>
 </body>
 </html>
 <?php 

@@ -1,10 +1,28 @@
 <?php
 include('navbar.php');
 include('dbcon.php');
+
+if (!isset($_SESSION['authenticated'])) {
+    $_SESSION['status'] = "You have to login in order to use the Dashboard";
+    header("Location: registration.php");
+    exit();
+}
+
+$user_id = $_SESSION['auth_user']['User_ID'];
+
+$query = "SELECT * FROM admins WHERE user_id = $user_id";
+$result = mysqli_query($con, $query);
+
+if (!($result && mysqli_num_rows($result) > 0)) {
+    header("Location: index.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="test.css">
@@ -12,10 +30,19 @@ include('dbcon.php');
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/edit-flip-v.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard</title>
+    <style>
+        <?php
+        if(isset($_SESSION['auth_user']) && $_SESSION['auth_user']){
+            echo "@media only screen and (max-width: 600px) {";
+            echo ".card-number, .containerCards th:nth-child(1), .containerCards td:nth-child(1) { display: none !important; }";
+            echo ".card-uID, .containerCards th:nth-child(5), .containerCards td:nth-child(5) { display: none !important;";
+            echo "}";
+        }
+        ?>
+    </style>
 </head>
 <body>
     <div class="forms">
-    <div class="page">
     <div class="container">
     <div class="user_dashboard">
     <h1>ID: <span class="displayed"><?=$_SESSION['auth_user']['User_ID']?><span></h1>
@@ -24,9 +51,7 @@ include('dbcon.php');
     <h1>Email: <span class="displayed"><?= $_SESSION['auth_user']['email']?></span></h1>
     </div>
     </div>
-    </div>
 
-    <div class="page">
         <div class="container">
     <?php
         if(isset($_SESSION['statusD'])){
@@ -72,7 +97,6 @@ include('dbcon.php');
     </form>
     </div>
     </div>
-    </div>
 <?php    
 class TableDisplay
 {
@@ -101,11 +125,11 @@ class TableDisplay
                 <table>
                     <thead>
 
-                    <th>Card Number</th>
+                    <th class='card-number'>Card Number</th>
                     <th>Card Image</th>
                     <th>Card Name</th>
                     <th>City</th>
-                    <th>User ID</th>
+                    <th class='card-uID'>User ID</th>
                     <th>Action</th>
                     </thead>
                     <tbody>";

@@ -14,7 +14,10 @@ include('navbar.php');
 </head>
 <body>
 <?php  
-include('dbcon.php');  
+include('dbcon.php'); 
+?>
+<h1 class='overlay-text2'>Your Favorite List</h1>
+<?php
 class FavoriteTable
 {
     private $con;
@@ -45,7 +48,6 @@ class FavoriteTable
                     <th>Card Name</th>
                     <th>Card Image</th>
                     <th>City</th>
-                    <th>User ID</th>
                     <th>Action</th>
                     </thead>
                     <tbody>";
@@ -102,9 +104,12 @@ class FavoriteTable
 }
 $tableDisplay = new FavoriteTable($con);
 
-$favoriteColumns = ['title', 'image_url', 'city_id', 'user_id'];
+$favoriteColumns = ['title', 'image_url', 'city_id'];
 $tableDisplay->displayTable('user_favorites', $favoriteColumns, 'id', $_SESSION['auth_user']['User_ID']);
 
 ?>
 </body>
 </html>
+<?php
+include('footer.php');
+?>

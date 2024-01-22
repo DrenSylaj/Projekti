@@ -82,7 +82,7 @@ class City {
             <h1 class='overlay-text2'>Places to Visit</h1>
             <p class='paragraph2'>Some of the most frequented and unique places to be in {$this->name}</p>
 
-            <div class='card-containter'>";
+            <div class='card-container'>";
 
         foreach ($this->placesToVisit as $place) {
             echo "
@@ -111,7 +111,7 @@ class City {
             <h1 class='overlay-text2'>Places to Eat</h1>
             <p class='paragraph2'>Some of the tastiest food in {$this->name}</p>
 
-            <div class='card-containter'>";
+            <div class='card-container'>";
 
         foreach ($this->placesToEat as $place) {
             echo "
@@ -142,7 +142,7 @@ class City {
             <h1 class='overlay-text2'>Places to Sleep</h1>
             <p class='paragraph2'>Some of the most comfortable places to sleep at night.</p>
 
-            <div class='card-containter'>";
+            <div class='card-container'>";
 
         foreach ($this->placesToSleep as $place) {
             echo "

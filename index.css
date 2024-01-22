@@ -304,7 +304,7 @@ nav .nav-bar .logo a{
 }
 
 .darkLight-searchBox .dark-light,
-.darkLight-searchBox .searchToggle{
+.darkLight-searchBox .searchToggle a{
     height: 40px;
     width: 40px;
     display: flex;
@@ -560,7 +560,7 @@ body.dark .search-field i{
     font-weight: 900;
     letter-spacing: 30px;
     color: white;
-    font-family: 'Balboa';
+    font-family: 'Futura';
 }
 
 .content h1{
@@ -910,14 +910,16 @@ body.dark .search-field i{
       min-width: 0;
     }
   }
-
-
 .mapdiv{
-    text-align: center;
-    max-width: 100%;
-    margin-top: 55px;
-}  
+  text-align: center;
+  margin-top: 25px;
+}
 
+.map-container{
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 .mapdiv path{
     stroke: rgb(52, 52, 52);
     stroke-width: 2.5px;
@@ -1194,6 +1196,9 @@ label {
   box-sizing: border-box;
 }
 
+.card{
+  margin: 25px 30px 20px 30px !important;
+}
 
 .card h2 {
   font-size: 2.25rem;
@@ -1209,7 +1214,7 @@ label {
   color: var(--white);
 }
 
-.card-containter{
+.card-container{
     margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
@@ -1403,134 +1408,10 @@ label {
   }
 }
 
-  .table-container{
-    margin-top: 55px;
-    display: grid;
-    place-items: center;
-  }
-
-  .table {
-    display: none;
-    max-width: 490px;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 0 40px -10px rgba(0, 0, 0, .4);
-  }
-  
-  .table header {
-    --start: 15%;
-    background: var(--body-color);
-    height: 100px;
-    color: #fff;
-    position: relative;
-    border-radius: 12px 12px 0 0;
-    overflow: hidden;
-  }
-  
-  .table header .table__title {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    right: calc(var(--start) * .75);
-    transform: translateY(-50%);
-    text-transform: uppercase;
-    margin: 0;
-  }
-  
-  .table header .table__title span {
-    display: block;
-  }
-  
-  .table header .table__title--top {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 6.5px;
-  }
-  
-  .table header .table__title--bottom {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 3.55px;
-    opacity: .65;
-    transform: translateY(-2px);
-  }
-  
-  .table header .table__icon {
-    fill: #fff;
-    opacity: .35;
-    width: 50px;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: var(--start);
-    transform: translate(-50%, -50%);
-  }
-  
-  .table__profiles {
-    background-color: #fff;
-    border-radius: 0 0 12px 12px;
-    height: auto;
-    padding: 15px 15px 20px;
-    display: grid;
-    row-gap: 8px;
-  }
-  
-  .table__profile {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    align-items: center;
-    padding: 10px 30px 10px 10px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
-    cursor: pointer;
-    height: auto;
-    transition: transform .25s cubic-bezier(.7,.98,.86,.98), box-shadow .25s cubic-bezier(.7,.98,.86,.98);
-    background-color: #fff;
-  }
-  
-  .table__profile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
-  }
-  
-  .table__picture {
-    max-width: 100%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
-  }
-  
-  .table__name a{
-    color: #979cb0;
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: 0.64px;
-    margin-left: 12px;
-    text-decoration: none;
-  }
-
-  
-  .table__value {
-    color: var(--underline-color);
-    font-weight: 700;
-    font-size: 34px;
-    text-align: right;
-  }
-  
-  .table__value > span {
-    opacity: .8;
-    font-weight: 600;
-    font-size: 13px;
-    margin-left: 3px;
-  }
-
 .icons{
   display: flex;
   justify-content: space-between;
 }
-
 
   
   

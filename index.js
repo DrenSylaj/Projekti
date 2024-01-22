@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-
     const slider = document.getElementById('slider');
     let scrollAmount = 1;
 
@@ -13,7 +12,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
         requestAnimationFrame(scrollSlider);
     }
-    scrollSlider();
+
+    const images = document.querySelectorAll('#slider img');
+    let imagesLoaded = 0;
+
+    function onImageLoad() {
+        imagesLoaded++;
+        if (imagesLoaded === images.length) {
+            scrollSlider();
+        }
+    }
+
+    images.forEach(image => {
+        if (image.complete) {
+            onImageLoad();
+        } else {
+            image.addEventListener('load', onImageLoad);
+        }
+    });
     
     const body = document.querySelector("body");
     const nav = document.querySelector("nav");
@@ -59,43 +75,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function validateLoginForm() {
-    var email = document.getElementById('signup_email').value;
-    var name = document.getElementById('signup_username').value;
-    var surname = document.getElementById('signup_surname').value;
-    var password = document.getElementById('signup_password').value;
-
-    if (name.trim() === '' || surname.trim() === '' || password.trim() === '' || email.trim()=== '') {
-        alert('Please enter both username and password.');
-        return false;
-    }
-
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!emailRegex.test(email)){
-        return false;
-    }
-
-    return true;
-}
-
-function validateSignupForm() {
-    var signupUsername = document.getElementById('signup-username').value;
-    var signupEmail = document.getElementById('signup-email').value;
-    var signupPassword = document.getElementById('signup-password').value;
-
-    if (signupUsername.trim() === '' || signupPassword.trim() === '') {
-        alert('Please fill in all required fields.');
-        return false;
-    }
-
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(signupEmail)) {
-        alert('Please enter a valid email address.');
-        return false;
-    }
-
-
-    return true;
-}
 
 
