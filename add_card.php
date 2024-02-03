@@ -1,13 +1,15 @@
 <?php
 session_start();
-include('dbcon.php');
+include_once('dbcon.php');
+
+$str = 'fotot/';
 
 if (isset($_POST['submit_btn'])) {
     $city_name = $_POST['cities'];
     $type = $_POST['type'];
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $image = $_POST['image'];
+    $image = $str.$_POST['image'];
 
     $get_city_id_query = "SELECT city_id FROM cities WHERE emriQytetit = '$city_name' LIMIT 1";
     $get_city_id_query_run = mysqli_query($con, $get_city_id_query);

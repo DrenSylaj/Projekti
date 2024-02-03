@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +6,12 @@
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="registration.css">
+  <script src="https://kit.fontawesome.com/348e25ce99.js" crossorigin="anonymous"></script>
 <body>
+
+<div class='goback'>
+<a href="index.php"><i class="fa-solid fa-left-long"></i></a>
+</div>
 <div class='registration-container'>
 <div class="logo-container">
     <div class="logo2">
@@ -31,13 +32,13 @@
     <section class="wrapper">
     <div class="alert">
     <?php
-      if(isset($_SESSION['status'])){
+      if (isset($_SESSION['status'])) {
         $statusMessage = $_SESSION['status'];
         $statusClass = ($_SESSION['status_type'] == 'success') ? 'success' : 'error';
         unset($_SESSION['status']);
         unset($_SESSION['status_type']);
         echo "<div class='$statusClass'>$statusMessage</div>";
-      }
+    }
     ?>  
   </div>
       <div class="form signup">

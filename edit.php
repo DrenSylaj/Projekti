@@ -1,27 +1,99 @@
 <?php
 include 'navbar.php';
-include 'dbcon.php';
+include_once('dbcon.php');
+
+class CardUpdater {
+    private $con;
+
+    
+    public function __construct($con) {
+        $this->con = $con;
+    }
+
+    public function getCityName($cityId){
+        $query = "SELECT emriQytetit FROM cities WHERE city_id = $cityId";
+        $result = $this->query($query);
+
+        $cityDetails = mysqli_fetch_assoc($result);
+        $cityName = $cityDetails['emriQytetit'];
+
+        return $cityName;
+    }
+
+    private function getCityIdByName($cityName) {
+        $query = "SELECT city_id FROM cities WHERE emriQytetit = '$cityName'";
+        $result = $this->query($query);
+    
+        $cityDetails = mysqli_fetch_assoc($result);
+    
+        return $cityDetails ? $cityDetails['city_id'] : null;
+    }
+
+    public function getCardDetails($cardId, $cardType){
+        $primaryKey = $this->getPrimaryKey($cardType);
+        $getCardDetailsQuery = "SELECT * FROM $cardType WHERE $primaryKey = $cardId";
+        $result = $this->query($getCardDetailsQuery);
+
+        $cardDetails = mysqli_fetch_assoc($result);
+
+        return $cardDetails;
+    }
+
+    public function updateCard($cardId, $cardCity, $cardTitle, $cardDescription, $cardImage, $cardType) {
+        $primaryKey = $this->getPrimaryKey($cardType);
+        $user_id = $_SESSION['auth_user']['User_ID'];
+        $cityId = $this->getCityIdByName($cardCity);
+
+        $updateQuery = "UPDATE $cardType SET title = '$cardTitle', description = '$cardDescription', image_url = '$cardImage', city_id = '$cityId', user_id = '$user_id' WHERE $primaryKey = '$cardId'";
+        $this->query($updateQuery);
+    }
+
+    private function getPrimaryKey($cardType) {
+        switch ($cardType) {
+            case 'visit':
+                return 'landmark_id';
+            case 'eat':
+                return 'restaurant_id';
+            case 'sleep':
+                return 'hotel_id';
+            default:
+                return '';
+        }
+    }
+
+    private function query($sql) {
+        return mysqli_query($this->con, $sql);
+    }
+
+    private function escapeString($string) {
+        return mysqli_real_escape_string($this->con, $string);
+    }
+}
 
 if (isset($_POST['update_btn'])) {
+    $cardUpdater = new CardUpdater($con);
+
     $update_card_id = $_POST['id_update'];
     $update_card_city = $_POST['city_update'];
     $update_card_title = $_POST['title_update'];
     $update_card_description = $_POST['description_update'];
     $update_card_image = $_POST['image_update'];
+    $update_card_type = $_POST['type_update'];
 
-    $update_query = "UPDATE visit SET city_id = '$update_card_city', title = '$update_card_title', description = '$update_card_description', image_url = '$update_card_image' WHERE landmark_id = '$update_card_id'";
-    $update_query_run = mysqli_query($con, $update_query);
+    $updateResult = $cardUpdater->updateCard($update_card_id, $update_card_city, $update_card_title, $update_card_description, $update_card_image, $update_card_type);
 
-    if ($update_query_run) {
+    if ($updateResult) {
         $_SESSION['statusD'] = "Card updated successfully!";
         $_SESSION['status_type'] = 'success';
-        header('Location:dashboard.php');
-        exit();
     } else {
         $_SESSION['statusD'] = "Error updating card. " . mysqli_error($con);
         $_SESSION['status_type'] = 'error';
     }
+
+    header('Location: dashboard.php');
+
 }
+
 
 ?>
 
@@ -47,17 +119,21 @@ if (isset($_POST['update_btn'])) {
                 echo "<div class='$statusClass'>$statusMessage</div>";
             }
 
-            if (isset($_GET['edit'])) {
+
+            if (isset($_GET['edit']) && isset($_GET['table'])) {
                 $edit_id = $_GET['edit'];
-                $edit_query = "SELECT * FROM visit WHERE landmark_id = $edit_id";
-                $edit_query_run = mysqli_query($con, $edit_query);
-                if (mysqli_num_rows($edit_query_run) > 0) {
-                    while ($row = mysqli_fetch_assoc($edit_query_run)) {
-                        $image_url = $row['image_url'];
-                        $city_id = $row['city_id'];
-                        $title = $row['title'];
-                        $description = $row['description'];
-                    }
+                $table_name = $_GET['table'];
+
+                $cardUpdater = new CardUpdater($con);
+                $cardDetails = $cardUpdater->getCardDetails($edit_id, $table_name);
+
+                
+                if ($cardDetails) {
+                    $image_url = $cardDetails['image_url'];
+                    $cityId = $cardDetails['city_id'];
+                    $cityName = $cardUpdater->getCityName($cityId);
+                    $title = $cardDetails['title'];
+                    $description = $cardDetails['description'];
                 }
             }
             ?>
@@ -65,16 +141,23 @@ if (isset($_POST['update_btn'])) {
             <form action='edit.php' method='POST' enctype='multipart/form-data'>
                 <img src='<?php echo $image_url; ?>' alt=''>
                 <input type='hidden' name='id_update' value='<?php echo $edit_id; ?>'>
+                <input type='hidden' name='edit_table' value='<?php echo $table_name; ?>'>
 
                 <label for=''>City:</label>
-                <input type='text' value='<?php echo $city_id; ?>' name='city_update'>
+                <select name="city_update">
+                    <?php
+                    $query = "SELECT emriQytetit FROM cities";
+                    $result = mysqli_query($con, $query);
 
-                <label for=''>Card Type:</label>
-                <select name='type_update' id='type'>
-                    <option value='visit'>Places to Visit</option>
-                    <option value='sleep'>Places to Sleep</option>
-                    <option value='eat'>Places to Eat</option>
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $city = $row['emriQytetit'];
+                        $selected = ($city == $cityName) ? 'selected' : '';
+                        echo "<option value='$city' $selected>$city</option>";
+                    }
+                    ?>
                 </select>
+
+                <input type='hidden' name='type_update' value=<?php echo $table_name; ?>>
 
                 <label for='title'>Title:</label>
                 <input type='text' name='title_update' value='<?php echo $title; ?>' required>
@@ -88,7 +171,7 @@ if (isset($_POST['update_btn'])) {
                 <br>
                 <div class='btns'>
                     <button type='submit' name='update_btn'>Update Card</button>
-                    <button type='reset' id='close-edit' class='cancel-btn' name='cancel_btn'>Cancel</button>
+                    <button type='reset' id='close-edit' class='cancel-btn' name='cancel_btn'><a href="dashboard.php">Cancel</a></button>
                 </div>
             </form>
         </div>

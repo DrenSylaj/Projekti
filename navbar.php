@@ -1,6 +1,7 @@
 <?php
-include('dbcon.php');
+include_once('dbcon.php');
 include('authentication.php');
+
 ?>
 
 <link rel="stylesheet" href="index.css">
@@ -44,22 +45,26 @@ include('authentication.php');
                 </div> 
                 <li><a href="aboutus.php">ABOUT US</a></li>
                 <?php
-                  $authUser = $_SESSION['auth_user'];
-                  $loggedInUserId = $authUser['User_ID'];
-
-                  $query = "SELECT user_id FROM admins";
-                  $result = mysqli_query($con, $query);
-
-                  $admins = [];
-                  while ($row = mysqli_fetch_assoc($result)) {
-                      $admins[] = $row['user_id']; 
-                  }
-
-                  $userIsAdmin = in_array($loggedInUserId, $admins, true);
-
-                  if ($userIsAdmin) {
-                      echo '<li><a href="dashboard.php">DASHBOARD</a></li>';
-                  }
+                  if (isset($_SESSION['auth_user'])) {
+                    $authUser = $_SESSION['auth_user'];
+                    $loggedInUserId = $authUser['User_ID'];
+                
+                    if (isset($con)) {
+                        $query = "SELECT user_id FROM admins";
+                        $result = mysqli_query($con, $query);
+                
+                        $admins = [];
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $admins[] = $row['user_id'];
+                        }
+                
+                        $userIsAdmin = in_array($loggedInUserId, $admins, true);
+                
+                        if ($userIsAdmin) {
+                            echo '<li><a href="dashboard.php">DASHBOARD</a></li>';
+                        }
+                    }
+                }
                 ?>
                 <?php if(!isset($_SESSION['authenticated'])) :?>
                 <li><a href="registration.php">LOG IN</a></li>

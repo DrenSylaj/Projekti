@@ -1,22 +1,25 @@
 <?php
-session_start();
+include_once('dbcon.php');
 include('navbar.php');
-include('dbcon.php');
 
 class City {
     private $name;
     private $description;
     private $image;
     private $image1;
+    private $imageR1;
+    private $imageR2;
     private $placesToVisit;
     private $placesToEat;
     private $placesToSleep;
 
-    public function __construct($con, $name, $description, $image, $image1, $placesToVisit, $placesToEat, $placesToSleep) {
+    public function __construct($con, $name, $description, $image, $imageR1, $imageR2, $image1, $placesToVisit, $placesToEat, $placesToSleep) {
         $this->con = $con;
         $this->name = $name;
         $this->description = $description;
         $this->image = $image;
+        $this->imageR1= $imageR1;
+        $this->imageR2 = $imageR2;
         $this->image1 = $image1;
         $this->placesToVisit = $placesToVisit;
         $this->placesToEat = $placesToEat;
@@ -37,7 +40,7 @@ class City {
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             <link rel='stylesheet' href='index.css'>
             <link rel='stylesheet' href='test.css'>
-            <script src='test.js'></script>
+            <script src='index.js'></script>
             <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
             <link rel='icon' type='image/x-icon' href='/fotot/Emblem_of_the_Republic_of_Kosovo.svg.png'>
@@ -46,6 +49,8 @@ class City {
         <body>
             <div class='image-background'>
                 <img src='{$this->image}' alt='' id='bc-photo'>
+                <img src='{$this->imageR1}' alt='' id='myPhoto2'>
+                <img src='{$this->imageR2}' alt='' id='resPhoto'>
             </div>
 
             <div class='content2'>
@@ -62,7 +67,9 @@ class City {
                     </div>
                     <div class='text-container2'>
                         <h1 class='overlay-text2'>{$this->name}</h1>
+                        <div class='text-containerP'>
                         <p>{$this->description}</p>
+                        </div>
                     </div>
                 </div>
             </div>";
@@ -180,6 +187,8 @@ if (!empty($selectedCityName)) {
         $cityDescription = $rowCity['description'];
         $cityLogo = $rowCity['image_url'];
         $city_background = $rowCity['image_background'];
+        $city_background2 = $rowCity['image_background2'];
+        $city_background3 = $rowCity['image_background3'];
 
         $queryVisit = "SELECT * FROM visit WHERE city_id = $selectedCityId";
         $resultVisit = mysqli_query($con, $queryVisit);
@@ -222,6 +231,8 @@ if (!empty($selectedCityName)) {
             "name" => $cityName,
             "description" => $cityDescription,
             "image" => $city_background,
+            "imageR1" => $city_background2,
+            "imageR2" => $city_background3,
             "image1" => $cityLogo,
             "placesToVisit" => $placesToVisit,
             "placesToEat" => $placesToEat,
@@ -233,6 +244,8 @@ if (!empty($selectedCityName)) {
             $cityData["name"],
             $cityData["description"],
             $cityData["image"],
+            $cityData["imageR1"],
+            $cityData["imageR2"],
             $cityData["image1"],
             $cityData["placesToVisit"],
             $cityData["placesToEat"],

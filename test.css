@@ -24,6 +24,17 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.container img{
+    height: auto;
+    width: 330px;
+}
+
+.page{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+}
+
 h1, h4 {
     text-align: center;
     color: #333;
@@ -49,15 +60,21 @@ input, select, textarea, button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #244AA5;
     color: #fff;
     cursor: pointer;
     border: none;
     border-radius: 5px;
 }
 
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+
 button:hover {
-    background-color: #0056b3;
+    background-color: #1b3779;
 }
 
 .status {
@@ -97,8 +114,8 @@ button:hover {
     }
 
     .container {
-        width: 80%; /* Occupy full width */
-        margin-right: 0; /* Remove right margin */
+        width: 80%; 
+        margin-right: 0; 
     }
 }
 
@@ -108,6 +125,10 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 20px;
+}
+
+.containerCards#favoriteC{
+    margin-bottom: 250px;
 }
 
 .displayCards {
@@ -148,7 +169,7 @@ td a:hover {
 }
 
 .icons{
-    display: flex;
+    text-align: center;
     max-width: 50px;
 }
 

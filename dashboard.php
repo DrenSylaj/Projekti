@@ -1,12 +1,7 @@
 <?php
+session_start();
 include('navbar.php');
-include('dbcon.php');
-
-if (!isset($_SESSION['authenticated'])) {
-    $_SESSION['status'] = "You have to login in order to use the Dashboard";
-    header("Location: registration.php");
-    exit();
-}
+include_once('dbcon.php');
 
 $user_id = $_SESSION['auth_user']['User_ID'];
 

@@ -1,4 +1,5 @@
 <?php
+include('users.php');
 
 class SignUpValidation {
     private $con;
@@ -47,15 +48,16 @@ class SignUpValidation {
 }
 
 session_start();
-include('dbcon.php');
+include_once('dbcon.php');
 
 if (isset($_POST['signup_btn'])) {
-    $SignUpValidation = new SignUpValidation($con);
-
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    $SignUpValidation = new SignUpValidation($con);
+    $users = new users($name, $surname, $email, $password);
 
     $SignUpValidation->registerUser($name, $surname, $email, $password);
 }

@@ -14,7 +14,7 @@ include('navbar.php');
 </head>
 <body>
 <?php  
-include('dbcon.php'); 
+include_once('dbcon.php');
 ?>
 <h1 class='overlay-text2'>Your Favorite List</h1>
 <?php
@@ -40,7 +40,7 @@ class FavoriteTable
     public function displayTable($tableName, $columns, $primaryKey, $userID)
     {
         echo "
-        <div class='containerCards'>
+        <div class='containerCards' id='favoriteC'>
             <section class='displayCards'>
                 <table>
                     <thead>
