@@ -11,7 +11,7 @@ include('authentication.php');
     <script src="index.js"></script>
 <nav>
     <div class="nav-bar">
-        <i class='bx bx-menu sidebarOpen' ></i>
+        <i class='bx bx-menu sidebarOpen'></i>
         <div class="logo-KS">
           <div>
             <img src="fotot/Emblem_of_the_Republic_of_Kosovo.svg.png" alt="logo" class="logo">

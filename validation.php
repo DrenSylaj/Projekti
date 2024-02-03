@@ -1,6 +1,6 @@
 <?php
-include('users.php');
-
+session_start();
+include_once('dbcon.php');
 class SignUpValidation {
     private $con;
 
@@ -12,16 +12,23 @@ class SignUpValidation {
         $verifyToken = md5(rand());
 
         if (!$this->emailExists($email)) {
-            $query = "INSERT INTO users (name, surname, email, password, verify_token) 
-                      VALUES ('$name', '$surname', '$email', '$password', '$verifyToken')";
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-            $queryRun = mysqli_query($this->con, $query);
+            $query = "INSERT INTO users (name, surname, email, password, verify_token) 
+                      VALUES (?, ?, ?, ?, ?)";
+            
+            $stmt = mysqli_prepare($this->con, $query);
+            mysqli_stmt_bind_param($stmt, 'sssss', $name, $surname, $email, $hashedPassword, $verifyToken);
+            
+            $queryRun = mysqli_stmt_execute($stmt);
 
             if ($queryRun) {
                 $this->setSessionMessage("Registration successful.", "success");
             } else {
                 $this->setSessionMessage("Registration failed.", "error");
             }
+
+            mysqli_stmt_close($stmt);
         } else {
             $this->setSessionMessage("Email ID already exists", "error");
         }
@@ -30,10 +37,17 @@ class SignUpValidation {
     }
 
     private function emailExists($email) {
-        $checkEmailQuery = "SELECT email FROM users WHERE email = '$email' LIMIT 1";
-        $checkEmailQueryRun = mysqli_query($this->con, $checkEmailQuery);
+        $checkEmailQuery = "SELECT email FROM users WHERE email = ? LIMIT 1";
+        $stmt = mysqli_prepare($this->con, $checkEmailQuery);
+        mysqli_stmt_bind_param($stmt, 's', $email);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
 
-        return mysqli_num_rows($checkEmailQueryRun) > 0;
+        $result = mysqli_stmt_num_rows($stmt) > 0;
+
+        mysqli_stmt_close($stmt);
+
+        return $result;
     }
 
     private function setSessionMessage($message, $type) {
@@ -46,9 +60,7 @@ class SignUpValidation {
         exit(0);
     }
 }
-
-session_start();
-include_once('dbcon.php');
+include('users.php');
 
 if (isset($_POST['signup_btn'])) {
     $name = $_POST['name'];
